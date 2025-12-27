@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Iremind — To-Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/todo.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="page-shell">
+
+        <div class="app-container">
+            <aside class="sidebar">
+
+                <div class="sidebar-logo">
+                    Iremind<span class="logo-dot">.</span>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a href="dashboard.html" class="menu-item">
+                        <i class="fas fa-chart-line"></i> Dashboard
+                    </a>
+                    <a href="calendar.html" class="menu-item">
+                        <i class="fas fa-calendar-alt"></i> Calendar
+                    </a>
+
+                    <a href="todo.html" class="menu-item active">
+                        <i class="fas fa-calendar-alt"></i> To-Do List
+                    </a>
+                    <div class="menu-item">
+                        <i class="fas fa-sticky-note"></i> Notes
+                    </div>
+                    <div class="menu-item">
+                        <i class="fas fa-bell"></i> Reminder
+                    </div>
+                    <div class="menu-item">
+                        <i class="fas fa-comment-dots"></i> Chats
+                        <span class="menu-item-badge">3</span>
+                    </div>
+                </nav>
+
+                <div class="quote-card">
+                    <div class="quote-card-tag">Today’s reminder</div>
+                    <p>“Every focused minute moves you forward.”</p>
+                    <p class="quote-card-author">— Iremind</p>
+                </div>
+
+                <div class="upgrade-card">
+                    <h3>Upgrade your plan</h3>
+                    <p>Your trial ends in 12 days. Unlock full potential.</p>
+                    <button class="upgrade-card-button">
+                        See plans
+                    </button>
+                </div>
+
+                <div class="sidebar-footer">
+                    <div class="menu-item">
+                        <i class="fas fa-cog"></i> Settings
+                    </div>
+
+                    <a href="index.html" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i> Log Out
+                    </a>
+                </div>
+            </aside>
+
+            <main class="main">
+                <header class="header">
+
+                    <div class="header-left-group">
+                        <div class="header-titles">
+                            <h1 class="page-title">To-Do List</h1>
+                            <p class="page-subtitle">Organize your day with clear, gentle focus.</p>
+                        </div>
+
+                        <section class="toolbar">
+                            <div class="search-wrapper">
+                                <span class="search-icon">🔍</span>
+                                <input type="text" placeholder="Search tasks or type a command" />
+                            </div>
+                            <button class="btn-primary">+ New Task</button>
+                        </section>
+                    </div>
+
+                    <div class="header-right-group">
+                        <button class="btn-ghost">Today · May 5</button>
+                        <div class="user-actions">
+                            <div class="user-profile">
+                                <img src="./images/avatar.jpg" alt="User Avatar" />
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <section class="filters">
+                    <button class="filter-chip active">All</button>
+                    <button class="filter-chip">Today</button>
+                    <button class="filter-chip">This Week</button>
+                    <button class="filter-chip">Upcoming</button>
+                    <button class="filter-chip">Completed</button>
+                </section>
+
+                <section class="content-grid">
+                    <div class="tasks-column">
+                        <div class="group-header">
+                            <h2>Today</h2>
+                            <span class="group-count">3 tasks</span>
+                        </div>
+
+                        <article class="task-card">
+                            <label class="task-checkbox">
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="task-main">
+                                <div class="task-title-row">
+                                    <h3>Review networking project report</h3>
+                                    <span class="task-tag task-tag-high">High</span>
+                                </div>
+                                <p class="task-note">Check subnet calculations and screenshots before submission.</p>
+                                <div class="task-meta">
+                                    <span class="meta-pill">📌 School · COMP 3324</span>
+                                    <span class="meta-pill">🕒 Due today · 23:59</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="task-card">
+                            <label class="task-checkbox">
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="task-main">
+                                <div class="task-title-row">
+                                    <h3>Design new Iremind calendar cards</h3>
+                                    <span class="task-tag task-tag-medium">Medium</span>
+                                </div>
+                                <p class="task-note">Update colors to match dashboard and add hover states.</p>
+                                <div class="task-meta">
+                                    <span class="meta-pill">🎨 Design</span>
+                                    <span class="meta-pill">🕒 Today · 18:00</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="task-card">
+                            <label class="task-checkbox">
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="task-main">
+                                <div class="task-title-row">
+                                    <h3>German vocabulary review session</h3>
+                                    <span class="task-tag task-tag-low">Low</span>
+                                </div>
+                                <p class="task-note">15 minutes of Anki cards – “kleine Schritte, großer Unterschied”.</p>
+                                <div class="task-meta">
+                                    <span class="meta-pill">📚 Study</span>
+                                    <span class="meta-pill">⏲ 15 min</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <div class="group-header">
+                            <h2>Upcoming</h2>
+                            <span class="group-count">2 tasks</span>
+                        </div>
+
+                        <article class="task-card">
+                            <label class="task-checkbox">
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="task-main">
+                                <div class="task-title-row">
+                                    <h3>Prepare slides for “Statement-Level Control Structures”</h3>
+                                    <span class="task-tag task-tag-medium">Medium</span>
+                                </div>
+                                <p class="task-note">7–8 clean slides with simple examples and speaker notes.</p>
+                                <div class="task-meta">
+                                    <span class="meta-pill">🎓 Presentation</span>
+                                    <span class="meta-pill">📅 Due in 2 days</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="task-card">
+                            <label class="task-checkbox">
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="task-main">
+                                <div class="task-title-row">
+                                    <h3>Plan next Art Club workshop</h3>
+                                    <span class="task-tag task-tag-low">Low</span>
+                                </div>
+                                <p class="task-note">Decide theme, materials, and Instagram caption.</p>
+                                <div class="task-meta">
+                                    <span class="meta-pill">🎭 Art Club</span>
+                                    <span class="meta-pill">📅 This weekend</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <aside class="side-column">
+                        <div class="side-card focus-card">
+                            <span class="side-label">Today’s Focus</span>
+                            <h3>One clear priority.</h3>
+                            <p>Pick the single task that moves your week forward the most and protect time for it.</p>
+                            <button class="btn-outline">Set focus task</button>
+                        </div>
+
+                        <div class="side-card stats-card">
+                            <div class="stats-header">
+                                <span class="side-label">Progress</span>
+                                <span class="stats-value">5 / 12 tasks</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <ul class="stats-list">
+                                <li><span class="dot dot-high"></span>High priority · 2 left</li>
+                                <li><span class="dot dot-medium"></span>Medium priority · 5 left</li>
+                                <li><span class="dot dot-low"></span>Low priority · 5 left</li>
+                            </ul>
+                        </div>
+
+                    </aside>
+                </section>
+            </main>
+        </div> <footer class="iremind-footer">
+            <div class="footer-main">
+                <span class="footer-brand">iREMIND</span>
+            </div>
+
+            <div class="social-links">
+                <a href="#" aria-label="iREMIND Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="iREMIND Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="iREMIND Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="iREMIND YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2025 iREMIND. All rights reserved.</span>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <span class="dot">•</span>
+                    <a href="#">Terms</a>
+                    <span class="dot">•</span>
+                    <a href="#">Support</a>
+                </div>
+            </div>
+        </footer>
+
+    </div> </body>
+
+</html>

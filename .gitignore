@@ -1,0 +1,71 @@
+# =========================
+# Node / Package managers
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Build outputs
+# =========================
+dist/
+build/
+.out/
+coverage/
+
+# =========================
+# Vite / React
+# =========================
+.vite/
+.eslintcache
+
+# =========================
+# Prisma
+# =========================
+prisma/dev.db
+prisma/*.db
+prisma/*.db-journal
+
+# =========================
+# Uploads / OCR outputs
+# =========================
+uploads/
+out/
+tmp/
+temp/
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS / Editor files
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Testing
+# =========================
+coverage/
+*.lcov
+
+# =========================
+# Optional (uncomment if used)
+# =========================
+# *.pdf
+# *.png
+# *.jpg

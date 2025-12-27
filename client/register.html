@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Register — Iremind</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="./images/first-logo.png" />
+    
+    <link rel="stylesheet" href="/src/auth.css" /> 
+</head>
+
+<body class="auth-page">
+
+  <video id="bg-video" autoplay loop muted playsinline>
+    <source src="./videos/background.mp4" type="video/mp4">
+</video>
+
+    <main class="auth">
+        <div class="auth-container-wrapper">
+            
+            <div class="illustration-panel">
+                <img class="loginimg" src="./images/loginimg.png" alt="">
+                </div>
+
+            <div class="auth-card">
+                
+              <header>
+    <div class="logo-area">
+        <img src="./images/first-logo.png" alt="Iremind Logo" />
+        <span>iREMIND</span>
+    </div>
+    
+    <div class="dropdown settings-menu">
+        <button class="dropbtn">Settings</button>
+        <div class="dropdown-content">
+            <a href="#Language">Language</a>
+            <a href="#Theme">Theme (Light/Dark)</a>
+            <a href="#Help">Help Center</a>
+        </div>
+    </div>
+    </header>
+
+                <h1>Sign Up For Free.</h1>
+                <p class="subtitle">Find balance in your mind.</p>
+                
+                <form id="register-form" class="form">
+                    
+                    <label>
+                        Username 
+                        <input type="text" name="username" required placeholder="Enter username..." />
+                    </label>
+
+                    <label>
+                        Full Name 
+                        <input type="text" name="fullname" required placeholder="Enter full name..." />
+                    </label>
+
+                    <label>
+                        Email Address
+                        <input type="email" name="email" required autocomplete="email" placeholder="Enter email address..." />
+                    </label>
+                    
+                    <label>
+                        Password 
+                        <input type="password" name="password" required autocomplete="new-password" placeholder="Enter password..." />
+                    </label>
+
+<div class="terms-checkbox">
+    <input type="checkbox" id="terms" required>
+    <label for="terms">
+        <span class="terms-text">
+            I accept to the 
+            <a href="#">Terms and Conditions</a> 
+            and I agree to the terms of <br>
+            <a href="#">Privacy Policy</a>
+        </span>
+    </label>
+</div>
+
+                    <button class="btn btn-primary btn-full-width" type="submit">
+                        SIGN UP
+                    </button>
+
+                    <p class="social-login-separator">OR SIGN UP WITH:</p>
+                    
+                    <div class="social-login">
+                        <a href="#" class="social-icon facebook">F</a>
+                        <a href="#" class="social-icon twitter">t</a>
+                        <a href="#" class="social-icon google">G+</a>
+                    </div>
+                </form>
+                
+                <p class="muted">
+                    Already have an account? <a href="index.html" class="link-primary">Sign In</a>
+                </p>
+            </div>
+            </div>
+        </main>
+        
+<script type="module" src="/src/auth.js"></script>
+
+
+
+</body>
+</html>

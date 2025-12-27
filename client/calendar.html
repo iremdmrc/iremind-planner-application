@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sundays. Calendar</title>
+
+    <!-- Font and Icon Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Link external CSS file -->
+    <link rel="stylesheet" href="/src/calendar.css">
+
+</head>
+<body class="antialiased">
+
+    <!-- Main Application Container -->
+    <div class="app-container">
+        
+        <!-- Sidebar (Left Menu) -->
+        <aside class="sidebar">
+            
+            <!-- Logo -->
+            <div class="sidebar-logo">
+                Iremind<span class="logo-dot">.</span>
+            </div>
+
+            <!-- Menu Items -->
+            <nav class="sidebar-nav">
+                <!-- Dashboard (Active) -->
+                <a href="dashboard.html" class="menu-item">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+
+                <!-- Calendar -->
+                <a href="#" class="menu-item active">
+                    <i class="fas fa-calendar-alt"></i> Calendar
+                </a>
+
+                <a href="todo.html" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i> To-Do List
+                </a>
+
+                <div class="menu-item">
+                    <i class="fas fa-sticky-note"></i> Notes
+                </div>
+
+                <div class="menu-item">
+                    <i class="fas fa-bell"></i> Reminder
+                </div>
+
+                <div class="menu-item">
+                    <i class="fas fa-comment-dots"></i> Chats
+                    <span class="menu-item-badge">3</span>
+                </div>
+            </nav>
+
+            <!-- Quote Card -->
+            <div class="quote-card">
+                <div class="quote-card-tag">Today’s reminder</div>
+                <p>“Every focused minute moves you forward.”</p>
+                <p class="quote-card-author">— Iremind</p>
+            </div>
+
+            <!-- Upgrade Card -->
+            <div class="upgrade-card">
+                <h3>Upgrade your plan</h3>
+                <p>Your trial ends in 12 days. Unlock full potential.</p>
+                <button class="upgrade-card-button">
+                    See plans
+                </button>
+            </div>
+            
+            <!-- Bottom Menu (Settings / Logout) -->
+            <div class="sidebar-footer">
+                <div class="menu-item">
+                    <i class="fas fa-cog"></i> Settings
+                </div>
+
+               <a href="index.html" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Title and Search Box -->
+            <header class="header">
+                <div class="header-title-area">
+                    <!-- Breadcrumb -->
+                    <div class="breadcrumb">
+                        Sundays <span class="mx-1">/</span> <span>Calendar</span>
+                    </div>
+                    <h1 class="page-title">Calendar</h1>
+                </div>
+                
+                <!-- Search Box -->
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search events..." class="search-input">
+                </div>
+            </header>
+
+            <!-- Calendar Controls -->
+            <div class="calendar-controls">
+                <div class="control-group">
+                    
+                    <!-- Left Controls: Tabs and Date Display -->
+                    <div class="control-left">
+                        <!-- Tab Buttons -->
+                        <div class="tab-buttons">
+                            <button class="tab-button active">All events</button>
+                            <button class="tab-button">Shared</button>
+                            <button class="tab-button">Public</button>
+                            <button class="tab-button hidden-sm">Archived</button>
+                        </div>
+
+                        <!-- Date Display -->
+                        <div class="date-display">
+                            <span class="date-month-tag">JAN</span>
+                            <span class="date-range">1 — 31</span>
+                            <span class="date-year">January 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Controls: Navigation and New Event -->
+                    <div class="control-right">
+                        <i class="fas fa-redo-alt refresh-icon"></i>
+                        
+                        <!-- Navigation Button Group -->
+                        <div class="nav-button-group">
+                            <button class="nav-button">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="nav-button">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="nav-button today-button">Today</button>
+                            <button class="nav-button view-button">
+                                Month view <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+
+                        <!-- Add New Event Button -->
+                        <button class="add-event-button">
+                            <i class="fas fa-plus"></i> Add event
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Grid -->
+            <div class="calendar-grid">
+                <!-- Day Headers -->
+                <div class="day-header">Mon</div>
+                <div class="day-header">Tue</div>
+                <div class="day-header">Wed</div>
+                <div class="day-header">Thu</div>
+                <div class="day-header">Fri</div>
+                <div class="day-header">Sat</div>
+                <div class="day-header">Sun</div>
+
+                <!-- Day Cells (Week 1) -->
+                <div class="calendar-day prev-month">
+                    <div class="day-number">30</div>
+                    <div class="event red">
+                        <span class="event-time">9:00 AM</span> Monday Standup
+                    </div>
+                </div>
+                <div class="calendar-day prev-month">
+                    <div class="day-number">31</div>
+                    <div class="event blue">
+                        <span class="event-time">3:00 PM</span> Coffee w/ Aliya
+                    </div>
+                </div>
+
+                <!-- January 1 - Start of Current Month -->
+                <div class="calendar-day">
+                    <div class="day-number">1</div>
+                    <!-- Empty Day -->
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">2</div>
+                    <div class="event green">
+                        <span class="event-time">10:00 AM</span> One-on-one w/ UX
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">3</div>
+                    <div class="event teal">
+                        <span class="event-time">1:00 PM</span> Project Demo
+                    </div>
+                    <div class="event yellow">
+                        <span class="event-time">5:00 PM</span> Dinner with C...
+                    </div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">4</div>
+                    <div class="event red">
+                        <span class="event-time">9:00 AM</span> All-hands meet...
+                    </div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">5</div>
+                    <!-- Empty Day -->
+                </div>
+                
+                <!-- Week 2 -->
+                <div class="calendar-day">
+                    <div class="day-number">6</div>
+                    <div class="event blue">
+                        <span class="event-time">11:00 AM</span> Client Review
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">7</div>
+                    <div class="event red">
+                        <span class="event-time">9:00 AM</span> Daily Sync
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">8</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">9</div>
+                    <div class="event green">
+                        <span class="event-time">2:00 PM</span> Q3 Planning
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">10</div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">11</div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">12</div>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="calendar-day">
+                    <div class="day-number">13</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">14</div>
+                    <div class="event teal">
+                        <span class="event-time">1:30 PM</span> Design Handoff
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">15</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">16</div>
+                    <div class="event blue">
+                        <span class="event-time">10:00 AM</span> Workshop
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">17</div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">18</div>
+                    <div class="event yellow">
+                        <span class="event-time">All Day</span> Birthday Celebration 
+                    </div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">19</div>
+                </div>
+                
+                <!-- Week 4 -->
+                <div class="calendar-day">
+                    <div class="day-number">20</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">21</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">22</div>
+                    <div class="event green">
+                        <span class="event-time">3:00 PM</span> Product Review
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">23</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">24</div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">25</div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">26</div>
+                </div>
+
+                <!-- Week 5 -->
+                <div class="calendar-day">
+                    <div class="day-number">27</div>
+                    <div class="event red">
+                        <span class="event-time">9:00 AM</span> Final Review
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">28</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">29</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">30</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">31</div>
+                </div>
+
+                <!-- Week 6 (Next Month) -->
+                <div class="calendar-day next-month weekend">
+                    <div class="day-number">1</div>
+                </div>
+                <div class="calendar-day next-month weekend">
+                    <div class="day-number">2</div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="iremind-footer">
+        <div class="footer-main">
+            <span class="footer-brand">iREMIND</span>
+        </div>
+        
+        <div class="social-links">
+            <a href="#" aria-label="iREMIND Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="iREMIND Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="iREMIND Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="iREMIND YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2025 iREMIND. All rights reserved.</span>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <span class="dot">•</span>
+                <a href="#">Terms</a>
+                <span class="dot">•</span>
+                <a href="#">Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
