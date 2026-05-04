@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Journal - Iremind</title>
+  <link rel="stylesheet" href="/src/study.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <div class="study-shell">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Iremind<span class="logo-dot">.</span></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="calendar.html" class="menu-item"><i class="fas fa-calendar-alt"></i> Calendar</a>
+        <a href="todo.html" class="menu-item"><i class="fas fa-calendar-alt"></i> To-Do List</a>
+        <a href="notes.html" class="menu-item"><i class="fas fa-sticky-note"></i> Notes</a>
+        <div class="menu-item"><i class="fas fa-bell"></i> Reminder</div>
+        <div class="menu-item"><i class="fas fa-comment-dots"></i> Chats <span class="menu-item-badge">3</span></div>
+      </nav>
+      <div class="quote-card">
+        <div class="quote-card-tag">Today's reminder</div>
+        <p>"Every focused minute moves you forward."</p>
+        <p class="quote-card-author">- Iremind</p>
+      </div>
+      <div class="upgrade-card">
+        <h3>Upgrade your plan</h3>
+        <p>Your trial ends in 12 days. Unlock full potential.</p>
+        <button class="upgrade-card-button">See plans</button>
+      </div>
+      <div class="sidebar-footer">
+        <a href="settings.html" class="menu-item"><i class="fas fa-cog"></i> Settings</a>
+        <a href="index.html" class="menu-item"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <main class="study-main journal-main">
+      <header class="study-header">
+        <div>
+          <span class="eyebrow">Reflection</span>
+          <h1>Journal</h1>
+          <p>Write your reflections, save them to your account, and come back to them anytime.</p>
+        </div>
+        <div class="user-profile"><img src="./images/avatar.jpg" alt="User Avatar" /></div>
+      </header>
+
+      <section class="journal-layout">
+        <form class="journal-editor" id="journal-form">
+          <input id="journal-title" placeholder="Entry title" maxlength="100" />
+          <select id="journal-mood">
+            <option value="calm">Calm</option>
+            <option value="focused">Focused</option>
+            <option value="happy">Happy</option>
+            <option value="tired">Tired</option>
+            <option value="proud">Proud</option>
+          </select>
+          <textarea id="journal-content" placeholder="What happened today? What did you learn?" rows="12"></textarea>
+          <div class="editor-actions">
+            <button class="ghost-pill" type="button" id="journal-clear">Clear</button>
+            <button class="primary-pill" type="submit">Save journal</button>
+          </div>
+        </form>
+
+        <section class="journal-list" id="journal-list"></section>
+      </section>
+    </main>
+  </div>
+
+  <div class="note-modal-backdrop" id="delete-journal-modal" hidden>
+    <div class="note-delete-card">
+      <span class="note-sticker">Journal</span>
+      <h2 id="delete-journal-title">Delete this entry?</h2>
+      <p>This reflection will be removed from your account.</p>
+      <div class="note-delete-actions">
+        <button class="ghost-pill" id="cancel-delete-journal-btn" type="button">Cancel</button>
+        <button class="danger-pill" id="confirm-delete-journal-btn" type="button">Delete entry</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/app-shell.js"></script>
+  <script type="module" src="/src/journal.js"></script>
+</body>
+</html>

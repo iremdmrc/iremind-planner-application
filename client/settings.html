@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Settings - Iremind</title>
+  <link rel="stylesheet" href="/src/study.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <div class="study-shell">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Iremind<span class="logo-dot">.</span></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="calendar.html" class="menu-item"><i class="fas fa-calendar-alt"></i> Calendar</a>
+        <a href="todo.html" class="menu-item"><i class="fas fa-calendar-alt"></i> To-Do List</a>
+        <a href="notes.html" class="menu-item"><i class="fas fa-sticky-note"></i> Notes</a>
+        <div class="menu-item"><i class="fas fa-bell"></i> Reminder</div>
+        <div class="menu-item"><i class="fas fa-comment-dots"></i> Chats <span class="menu-item-badge">3</span></div>
+      </nav>
+      <div class="quote-card">
+        <div class="quote-card-tag">Today's reminder</div>
+        <p>"Every focused minute moves you forward."</p>
+        <p class="quote-card-author">- Iremind</p>
+      </div>
+      <div class="upgrade-card">
+        <h3>Upgrade your plan</h3>
+        <p>Your trial ends in 12 days. Unlock full potential.</p>
+        <button class="upgrade-card-button">See plans</button>
+      </div>
+      <div class="sidebar-footer">
+        <a href="settings.html" class="menu-item active"><i class="fas fa-cog"></i> Settings</a>
+        <a href="index.html" class="menu-item"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <main class="study-main settings-main">
+      <header class="study-header">
+        <div>
+          <span class="eyebrow">Account</span>
+          <h1>Settings</h1>
+          <p>Manage your theme, personal information, profile photo, and password.</p>
+        </div>
+        <div class="user-profile"><img src="./images/avatar.jpg" alt="User Avatar" /></div>
+      </header>
+
+      <section class="settings-grid">
+        <form class="settings-card" id="profile-form">
+          <h2>Personal information</h2>
+          <label>
+            Display name
+            <input id="settings-name" type="text" maxlength="80" required />
+          </label>
+          <label>
+            Email
+            <input id="settings-email" type="email" required />
+          </label>
+          <button class="primary-pill" type="submit">Save profile</button>
+          <p class="form-message" id="profile-message"></p>
+        </form>
+
+        <form class="settings-card" id="password-form">
+          <h2>Password</h2>
+          <label>
+            Current password
+            <input id="current-password" type="password" autocomplete="current-password" required />
+          </label>
+          <label>
+            New password
+            <input id="new-password" type="password" autocomplete="new-password" minlength="6" required />
+          </label>
+          <button class="primary-pill" type="submit">Change password</button>
+          <p class="form-message" id="password-message"></p>
+        </form>
+
+        <section class="settings-card">
+          <h2>Theme</h2>
+          <div class="theme-options">
+            <button class="theme-choice" data-theme-choice="warm" type="button"><span class="swatch warm"></span>Warm</button>
+            <button class="theme-choice" data-theme-choice="rose" type="button"><span class="swatch rose"></span>Rose</button>
+            <button class="theme-choice" data-theme-choice="sage" type="button"><span class="swatch sage"></span>Sage</button>
+            <button class="theme-choice" data-theme-choice="lavender" type="button"><span class="swatch lavender"></span>Lavender</button>
+            <button class="theme-choice" data-theme-choice="sky" type="button"><span class="swatch sky"></span>Sky</button>
+            <button class="theme-choice" data-theme-choice="peach" type="button"><span class="swatch peach"></span>Peach</button>
+            <button class="theme-choice" data-theme-choice="dark" type="button"><span class="swatch dark"></span>Dark</button>
+          </div>
+          <p class="settings-note">Theme is saved on this browser and applies when you move between pages.</p>
+        </section>
+
+        <section class="settings-card">
+          <h2>Profile photo</h2>
+          <p class="settings-note">Click the round profile photo to choose an image from your computer. It is saved to your account.</p>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/src/app-shell.js"></script>
+  <script type="module" src="/src/settings.js"></script>
+</body>
+</html>

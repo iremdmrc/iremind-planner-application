@@ -1,0 +1,1582 @@
+/* ---------- ROOT COLORS : Iremind warm theme (Cleaned-up, non-duplicated palette) ---------- */
+:root {
+    /* Color Palette (Inspired by your brand) - latest and used palette kept */
+    --color-primary: #A36B3D; /* Dark Brown / Brand Accent */
+    --color-primary-soft: #f3c07a; /* Taken from sidebar */
+    --color-secondary: #CC8D30; /* Vivid Mustard / Action Color */
+    --color-sidebar-bg: #F1B855; /* Taken from sidebar */
+    --color-background: #FFFDF8; /* Main Background (Cream) - Old: --color-bg */
+    --color-bg-light: #FAE5B4; /* Old: --color-bg-light */
+    --color-surface: #FFFFFF; /* Inner cards */
+    --color-card-bg: #FFF9EC; /* Card background (lightest cream) */
+    --color-text-title: #333333; /* Old: #3B2314 */
+    --color-text-subtitle: #7B6D5A; /* Subtle text / light brown */
+    --color-text-dark: #2B1A0E; /* Taken from sidebar */
+    --color-text-muted: #B5A475; /* More muted text */
+    --color-border: #F0EAD6; /* Thin lines */
+    --color-border-light: #F2D6A1; /* Taken from sidebar */
+    --color-text-title: #3B2314;   
+
+    /* Priority Colors */
+    --color-tag-high: #D84B4B; 
+    --color-tag-medium: #CC8D30; 
+    --color-tag-low: #75A384; /* Soft green */
+    
+    --radius-base: 12px;
+    --radius-md: 14px; /* Taken from sidebar */
+    --radius-lg: 16px; /* Old: 20px */
+    --shadow-soft: 0 5px 15px rgba(163, 107, 61, 0.05); /* Soft brown shadow */
+    --shadow-subtle: 0 2px 6px rgba(163, 107, 61, 0.03); 
+    --quote-bg: linear-gradient(135deg, #F9E3B0 0%, #F1B855 40%, #FFF9EC 100%);
+}
+
+html[data-theme="rose"] {
+    --color-primary: #8b3a55;
+    --color-primary-soft: #d88aa0;
+    --color-secondary: #c76f8a;
+    --color-sidebar-bg: #d88aa0;
+    --color-background: #fff7f8;
+    --color-bg-light: #f8d8dd;
+    --color-card-bg: #fff7f8;
+    --color-border-light: #efb8c5;
+    --quote-bg: linear-gradient(135deg, #fff7f8 0%, #d88aa0 55%, #fffafb 100%);
+}
+
+html[data-theme="sage"] {
+    --color-primary: #365f37;
+    --color-primary-soft: #9fbd73;
+    --color-secondary: #7fa35d;
+    --color-sidebar-bg: #9fbd73;
+    --color-background: #fbfff4;
+    --color-bg-light: #dfe8cf;
+    --color-card-bg: #fbfff4;
+    --color-border-light: #bfd3a8;
+    --quote-bg: linear-gradient(135deg, #fbfff4 0%, #9fbd73 55%, #fefff9 100%);
+}
+
+html[data-theme="lavender"] {
+    --color-primary: #6f56a8;
+    --color-primary-soft: #b99be8;
+    --color-secondary: #9d84d8;
+    --color-sidebar-bg: #b99be8;
+    --color-background: #fbf8ff;
+    --color-bg-light: #e6ddfa;
+    --color-card-bg: #fbf8ff;
+    --color-border-light: #cdbff0;
+    --quote-bg: linear-gradient(135deg, #fbf8ff 0%, #b99be8 55%, #ffffff 100%);
+}
+
+html[data-theme="sky"] {
+    --color-primary: #32658f;
+    --color-primary-soft: #8fc0e8;
+    --color-secondary: #72a8d7;
+    --color-sidebar-bg: #8fc0e8;
+    --color-background: #f7fbff;
+    --color-bg-light: #dcedfb;
+    --color-card-bg: #f7fbff;
+    --color-border-light: #b8d7ef;
+    --quote-bg: linear-gradient(135deg, #f7fbff 0%, #8fc0e8 55%, #ffffff 100%);
+}
+
+html[data-theme="peach"] {
+    --color-primary: #96543e;
+    --color-primary-soft: #eba989;
+    --color-secondary: #df9c7d;
+    --color-sidebar-bg: #eba989;
+    --color-background: #fff9f4;
+    --color-bg-light: #f9dfd0;
+    --color-card-bg: #fff9f4;
+    --color-border-light: #efc6b5;
+    --quote-bg: linear-gradient(135deg, #fff9f4 0%, #eba989 55%, #ffffff 100%);
+}
+
+html[data-theme="dark"] {
+    --color-primary: #b8a5ff;
+    --color-primary-soft: #6d5ca8;
+    --color-secondary: #8fc7ff;
+    --color-sidebar-bg: #111a33;
+    --color-background: #0f172a;
+    --color-bg-light: #0b1120;
+    --color-surface: #111827;
+    --color-card-bg: #172033;
+    --color-text-title: #f8fafc;
+    --color-text-subtitle: #cbd5e1;
+    --color-text-dark: #f8fafc;
+    --color-text-muted: #94a3b8;
+    --color-border: rgba(255,255,255,0.10);
+    --color-border-light: rgba(255,255,255,0.14);
+    --quote-bg: linear-gradient(135deg, #1f2937 0%, #312e81 55%, #111827 100%);
+}
+
+/* ---------- GLOBAL & RESET ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Uses Poppins font and colors from the second definition */
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-bg-light); /* Outer background color */
+    color: var(--color-text-title);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+}
+
+/* layout */
+
+.app-container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    width: calc(100% - 40px);
+    padding: 1.5rem;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+/*
+============================================================
+SIDEBAR (LEFT MENU) STYLES
+============================================================
+*/
+
+.sidebar {
+    box-sizing: content-box;
+    width: 260px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    background-color: var(--color-sidebar-bg);
+    /* Removed unnecessary/incorrect scroll rules */
+}
+
+.sidebar-logo {
+    font-size: 1.875rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 2rem;
+    padding-left: 0.25rem;
+    color: var(--color-card-bg); /* Cream */
+}
+.sidebar-logo span {
+    color: var(--color-primary);
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    color: #FDF0D0;
+    text-decoration: none;
+    border: 2px solid transparent; 
+}
+.menu-item i {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.75rem;
+}
+.menu-item:hover {
+    color: var(--color-text-dark);
+    background-color: rgba(255, 249, 236, 0.7);
+}
+.menu-item.active {
+    background-color: var(--color-card-bg);
+    color: var(--color-text-dark);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    border-right: 4px solid var(--color-primary); /* Accent bar */
+    font-weight: 600;
+}
+.menu-item-badge {
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* Quote Card */
+.quote-card {
+    padding: 1rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    background: var(--quote-bg);
+    border: 1px solid rgba(241, 184, 85, 0.45);
+}
+.quote-card-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    background-color: rgba(138, 75, 23, 0.1);
+    color: var(--color-primary);
+}
+.quote-card p {
+    font-size: 0.875rem;
+    font-style: italic;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    color: var(--color-text-muted);
+}
+.quote-card-author {
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+    color: var(--color-primary);
+}
+
+/* Upgrade Card */
+.upgrade-card {
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    margin-top: auto;
+    border: 1px solid var(--color-border-light);
+    background-color: var(--color-card-bg);
+}
+.upgrade-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--color-primary);
+}
+.upgrade-card p {
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-muted);
+}
+.upgrade-card-button {
+    width: 100%;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s;
+    background-color: var(--color-text-dark);
+    color: var(--color-card-bg);
+    border: none;
+    cursor: pointer;
+}
+.upgrade-card-button:hover {
+    background-color: #4a2d1f;
+}
+
+/* Bottom Menu (Settings / Logout) */
+.sidebar-footer {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.sidebar-footer .menu-item {
+    color: var(--color-text-dark); 
+    font-weight: 500;
+    border: none; 
+}
+.sidebar-footer .menu-item:hover {
+    /* var(--color-gray-900) was undefined, using title color instead */
+    color: var(--color-text-title); 
+    background-color: var(--color-card-bg);
+}
+
+
+/* ---------- MAIN AREA ---------- */
+
+.main {
+    width: 100%;
+    max-width: none;
+    margin-left: 50px;
+    padding: 30px 40px;
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-border);
+    min-width: 0;
+}
+
+/* ---------------------------------------------------- */
+/* 1. HEADER & TOOLBAR STYLES */
+/* ---------------------------------------------------- */
+
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 30px; 
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* LEFT GROUP: Titles + Toolbar */
+.header-left-group {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column; 
+    gap: 20px; 
+}
+
+/* RIGHT GROUP: Date and Profile (aligned horizontally) */
+.header-right-group {
+    display: flex;
+    align-items: center; 
+    flex-shrink: 0; 
+    margin-top: 10px; 
+    justify-content: flex-end;
+    gap: 14px;
+    padding-right: 4px; 
+}
+
+.page-title {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-size: 36px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    color: var(--color-text-title);
+    margin-top: 30px;
+}
+
+.page-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-subtitle);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 0; 
+}
+
+.welcome-message {
+    margin: 0.35rem 0 0;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.user-profile {
+    cursor: pointer;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Search bar container */
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    background: white; 
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-subtle);
+    width: 350px; 
+    min-width: 250px; 
+}
+
+.search-icon {
+    color: var(--color-text-muted);
+    margin-right: 8px;
+    font-size: 1.1rem;
+    flex-shrink: 0; 
+}
+
+/* INPUT FIELD */
+.search-wrapper input {
+    border: none;
+    outline: none;
+    background: transparent;
+    flex-grow: 1; 
+    min-width: 0; 
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+}
+
+.search-wrapper input::placeholder {
+    color: var(--color-text-muted);
+}
+
+/* Date Button */
+.btn-ghost {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-ghost:hover {
+    background-color: #F8F4ED;
+}
+
+.user-profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-secondary);
+}
+
+/* Generic Buttons */
+.btn-primary {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(163, 107, 61, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background: #743f13;
+    box-shadow: 0 10px 25px rgba(163, 107, 61, 0.5);
+}
+
+.btn-outline {
+    background: #fff;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+}
+
+
+/* ---------------------------------------------------- */
+/* 2. FILTERS */
+/* ---------------------------------------------------- */
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0 25px 0;
+    padding-bottom: 10px;
+    overflow-x: auto;
+}
+
+.filter-chip {
+    background: #F8F4ED;
+    color: var(--color-text-subtitle);
+    border: 1px solid var(--color-border);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+}
+
+.filter-chip.active {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 10px rgba(163, 107, 61, 0.3);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr;
+    gap: 30px;
+    min-width: 0;
+}
+
+/* 3.1 TASKS COLUMN */
+.tasks-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Count aligned lower */
+    padding: 10px 0 10px 0;
+    margin-bottom: 5px; /* Space between headers and cards */
+    border-bottom: 2px solid var(--color-border); /* Thin line below header */
+}
+
+.group-header h2 {
+    font-size: 1.5rem; /* Larger group title */
+    font-weight: 700;
+    color: var(--color-text-title);
+    letter-spacing: -0.5px;
+}
+
+.group-count {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+/* Task Cards */
+.task-card {
+    display: flex;
+    align-items: flex-start;
+    background-color: var(--color-card-bg);
+    padding: 20px 25px; /* More padding */
+    border-radius: var(--radius-base);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-subtle); /* Light shadow */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.task-card:hover {
+    box-shadow: var(--shadow-lifted); /* Stronger shadow to lift card */
+    border-color: var(--color-primary); /* Bright border in primary color */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.task-main {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.task-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+}
+
+.task-title-row h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-title);
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.task-note {
+    font-size: 0.9rem;
+    color: var(--color-text-subtitle);
+    margin: 6px 0 12px 0;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* Task Labels (Pills) */
+.task-tag {
+    font-size: 0.75rem;
+    font-weight: 700; /* Bolder font */
+    padding: 4px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Light shadow on labels */
+}
+
+.task-tag-high { background-color: var(--color-tag-high); color: white; }
+.task-tag-medium { background-color: var(--color-tag-medium); color: white; }
+.task-tag-low { background-color: var(--color-tag-low); color: white; }
+
+/* Task Meta Information */
+.task-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-top: 5px;
+}
+
+.meta-pill {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    background-color: #F7FAFC; /* Very light background */
+    border: 1px solid #E2E8F0;
+    padding: 4px 10px;
+    border-radius: 8px; /* Softer corners */
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.task-card:hover .meta-pill {
+    background-color: #EBF8FF; /* Meta pills change background on card hover */
+}
+
+/* ---------------------------------------------------- */
+/* 4. CUSTOM CHECKBOX STYLE (More familiar and clear)   */
+/* ---------------------------------------------------- */
+.task-checkbox {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 20px; 
+    margin-top: 3px;
+    min-width: 20px; 
+}
+
+.task-checkbox input {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 20px; /* Standard square size */
+    width: 20px;
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-text-muted); /* Box border */
+    border-radius: 4px; /* Slightly more squared corners */
+    transition: all 0.2s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08); /* Light inner shadow */
+}
+
+/* Hover effect: border changes color on hover */
+.task-checkbox:hover .checkmark {
+    border-color: var(--color-primary); 
+}
+
+/* Checked state: box filled with primary/accent color */
+.task-checkbox input:checked ~ .checkmark {
+    background-color: var(--color-primary); /* Previously secondary, now primary */
+    border-color: var(--color-primary);
+    transform: scale(1); /* Removed scale effect for a stable look */
+    box-shadow: 0 2px 4px rgba(90, 103, 216, 0.3); /* Stronger outer shadow on checked */
+}
+
+/* Checkmark icon */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px; /* Align tick horizontally */
+    top: 2px;  /* Align tick vertically */
+    width: 5px;
+    height: 10px;
+    border: solid white; /* Tick color */
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    transition: transform 0.2s;
+}
+
+/* Show tick when checked */
+.task-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style for completed tasks (kept as-is) */
+.task-card input:checked ~ .task-main h3,
+.task-card input:checked ~ .task-main .task-note {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+    transition: color 0.3s;
+}
+
+/* ---------------------------------------------------- */
+/* 4. SIDE COLUMN                                       */
+/* ---------------------------------------------------- */
+
+.side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-card {
+    background-color: var(--color-card-bg);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-subtle);
+    min-width: 0;
+}
+
+.side-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+    letter-spacing: 0.05em;
+}
+
+/* Focus Card */
+.focus-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    overflow-wrap: anywhere;
+}
+
+.focus-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-subtitle);
+    margin-bottom: 15px;
+}
+
+/* Stats Card */
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.stats-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #F8F4ED;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 42%; 
+    background-color: var(--color-secondary);
+    border-radius: 4px;
+}
+
+.stats-list {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--color-text-subtitle);
+}
+
+.stats-list li {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.stats-list li .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.dot-high { background-color: var(--color-tag-high); }
+.dot-medium { background-color: var(--color-tag-medium); }
+.dot-low { background-color: var(--color-tag-low); }
+
+.view-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px;
+    border-radius: 999px;
+    background: #f7fafc;
+    border: 1px solid #e8edf2;
+}
+
+.view-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    color: #52606d;
+    font-size: 0.88rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border: 0;
+    cursor: pointer;
+}
+
+.view-pill.active {
+    background: white;
+    color: #25313e;
+    box-shadow: 0 3px 12px rgba(28, 43, 58, 0.10);
+}
+
+.view-pill.muted {
+    opacity: 0.72;
+}
+
+.kanban-content-grid {
+    display: block;
+}
+
+.kanban-content-grid:not(.is-table-view) .side-column {
+    display: none;
+}
+
+.kanban-content-grid.is-table-view {
+    display: grid;
+}
+
+.kanban-content-grid .tasks-column {
+    min-width: 0;
+}
+
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    min-height: 620px;
+    border-top: 1px solid #edf1f4;
+    overflow-x: auto;
+}
+
+.kanban-column {
+    min-width: 260px;
+    padding: 0 18px 28px;
+    border-right: 1px solid #edf1f4;
+}
+
+.kanban-column:last-child {
+    border-right: 0;
+}
+
+.kanban-column-header {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.kanban-column-header > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.kanban-column-header h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #23272f;
+}
+
+.kanban-count {
+    min-width: 28px;
+    height: 28px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 999px;
+    background: #eef3f6;
+    color: #7b8794;
+    font-weight: 800;
+}
+
+.kanban-accent {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+}
+
+.kanban-accent-blue { background: #9dd7ff; }
+.kanban-accent-peach { background: #ffb9a9; }
+.kanban-accent-mint { background: #9ce7dd; }
+.kanban-accent-gray { background: #cfd8dc; }
+
+.kanban-dropzone {
+    min-height: 520px;
+    display: grid;
+    align-content: start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 18px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.kanban-dropzone.is-over {
+    background: rgba(141, 190, 255, 0.16);
+    box-shadow: inset 0 0 0 2px rgba(110, 166, 234, 0.28);
+}
+
+.kanban-empty {
+    margin: 0;
+    padding: 18px;
+    border: 1px dashed #d7dee5;
+    border-radius: 16px;
+    color: #9aa6b2;
+    text-align: center;
+    font-size: 0.86rem;
+}
+
+.kanban-task-card {
+    position: relative;
+    display: block;
+    padding: 18px;
+    border: 0;
+    border-radius: 13px;
+    background: #fff6e8;
+    box-shadow: 0 8px 18px rgba(138, 92, 38, 0.07);
+    cursor: grab;
+}
+
+.kanban-task-card:nth-child(3n + 2) {
+    background: #fff9ef;
+}
+
+.kanban-task-card:nth-child(3n + 3) {
+    background: #f8ecd9;
+}
+
+.kanban-column[data-drop-status="WORKING"] .kanban-task-card {
+    background: #f4e4cc;
+}
+
+.kanban-column[data-drop-status="WORKING"] .kanban-task-card:nth-child(3n + 2) {
+    background: #f8ead5;
+}
+
+.kanban-column[data-drop-status="WORKING"] .kanban-task-card:nth-child(3n + 3) {
+    background: #efd9bd;
+}
+
+.kanban-column[data-drop-status="DONE"] .kanban-task-card {
+    background: #f2eee6;
+}
+
+.kanban-task-card:active,
+.kanban-task-card.is-dragging {
+    cursor: grabbing;
+}
+
+.kanban-task-card.is-dragging {
+    opacity: 0.55;
+    transform: rotate(1deg) scale(0.98);
+}
+
+.kanban-task-card.is-focus {
+    background: #ffe2a8;
+    box-shadow: 0 12px 26px rgba(204, 141, 48, 0.20);
+}
+
+.kanban-task-card.is-done {
+    background: #eee8de;
+    opacity: 0.86;
+}
+
+.kanban-task-card .task-title-row {
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.kanban-task-card .task-title-row h3 {
+    flex: 1;
+    font-size: 0.98rem;
+    line-height: 1.35;
+    color: #1f2933;
+}
+
+.task-avatar {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 auto;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #8c7cf6, #5fc7d8);
+    color: white;
+    font-size: 0.86rem;
+    font-weight: 800;
+}
+
+.kanban-task-card .task-actions {
+    gap: 5px;
+    align-self: flex-start;
+}
+
+.kanban-task-card .task-icon-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255,255,255,0.62);
+    color: #52606d;
+    border-color: rgba(255,255,255,0.76);
+}
+
+.kanban-task-card .task-tag {
+    padding: 3px 8px;
+    font-size: 0.64rem;
+    box-shadow: none;
+}
+
+.kanban-task-card .task-note {
+    margin: 10px 0 12px 44px;
+    color: #435160;
+    font-size: 0.84rem;
+}
+
+.kanban-task-card .task-meta {
+    margin-left: 44px;
+    align-items: center;
+    margin-top: 14px;
+}
+
+.kanban-done-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.58);
+    color: #52606d;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.kanban-done-toggle input {
+    width: 13px;
+    height: 13px;
+    accent-color: #2796d5;
+}
+
+.kanban-task-card .meta-pill {
+    background: rgba(255,255,255,0.56);
+    border-color: rgba(255,255,255,0.66);
+}
+
+.kanban-task-card mark.search-hit {
+    background: rgba(255, 240, 132, 0.9);
+    border-radius: 4px;
+    padding: 0 2px;
+}
+
+.task-table-view {
+    display: grid;
+    gap: 14px;
+}
+
+.table-task-card {
+    align-items: flex-start;
+}
+
+.table-task-card .task-title-row {
+    align-items: flex-start;
+}
+
+.table-task-card .task-title-row h3 {
+    flex: 1;
+}
+
+.table-task-card .task-meta {
+    margin-top: 12px;
+}
+
+html[data-theme="dark"] .main,
+html[data-theme="dark"] .task-modal,
+html[data-theme="dark"] .side-card {
+    background: #111827;
+}
+
+html[data-theme="dark"] .search-wrapper,
+html[data-theme="dark"] .btn-ghost,
+html[data-theme="dark"] .filter-chip,
+html[data-theme="dark"] .view-toggle {
+    background: #172033;
+    border-color: rgba(255,255,255,0.12);
+    color: #e2e8f0;
+}
+
+html[data-theme="dark"] .view-pill.active {
+    background: #253044;
+    color: #f8fafc;
+}
+
+html[data-theme="dark"] .kanban-board,
+html[data-theme="dark"] .kanban-column {
+    border-color: rgba(255,255,255,0.10);
+}
+
+html[data-theme="dark"] .kanban-column-header h2 {
+    color: #f8fafc;
+}
+
+html[data-theme="dark"] .kanban-count {
+    background: #253044;
+    color: #cbd5e1;
+}
+
+html[data-theme="dark"] .kanban-task-card {
+    background: #1f3b5a;
+    color: #f8fafc;
+}
+
+html[data-theme="dark"] .kanban-task-card:nth-child(3n + 2) {
+    background: #1f4f58;
+}
+
+html[data-theme="dark"] .kanban-task-card:nth-child(3n + 3) {
+    background: #5b342d;
+}
+
+html[data-theme="dark"] .kanban-task-card .task-title-row h3,
+html[data-theme="dark"] .table-task-card .task-title-row h3 {
+    color: #f8fafc;
+}
+
+html[data-theme="dark"] .kanban-task-card .task-note,
+html[data-theme="dark"] .table-task-card .task-note {
+    color: #cbd5e1;
+}
+
+html[data-theme="dark"] .kanban-done-toggle,
+html[data-theme="dark"] .kanban-task-card .meta-pill {
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.12);
+    color: #e2e8f0;
+}
+
+html[data-theme="dark"] .task-icon-btn {
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.12);
+    color: #e2e8f0;
+}
+
+.task-card.is-focus {
+    border-color: #CC8D30;
+    background: #FFF1D2;
+    box-shadow: 0 18px 40px rgba(163, 107, 61, 0.16);
+}
+
+.task-card.is-done {
+    opacity: 0.72;
+}
+
+.task-card.is-done .task-title-row h3,
+.task-card.is-done .task-note {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+}
+
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.task-icon-btn.is-active {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: white;
+}
+
+.task-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: #FFFDF8;
+    color: var(--color-primary);
+    cursor: pointer;
+    display: inline-grid;
+    place-items: center;
+    transition: background-color 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.task-icon-btn:hover {
+    background: #F8F4ED;
+    border-color: var(--color-primary);
+    transform: translateY(-1px);
+}
+
+.task-delete-btn {
+    color: var(--color-tag-high);
+}
+
+.search-hit {
+    background: #FFE08A;
+    color: var(--color-text-dark);
+    border-radius: 4px;
+    padding: 0 2px;
+}
+
+.task-empty {
+    padding: 24px;
+    border: 1px dashed var(--color-border-light);
+    border-radius: var(--radius-base);
+    color: var(--color-text-subtitle);
+    background: rgba(255, 253, 248, 0.68);
+}
+
+.task-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(43, 26, 14, 0.42);
+    display: grid;
+    place-items: center;
+    z-index: 50;
+    padding: 20px;
+}
+
+.task-modal-backdrop[hidden] {
+    display: none;
+}
+
+.task-modal {
+    width: min(460px, calc(100vw - 32px));
+    max-height: calc(100vh - 40px);
+    overflow: auto;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: 0 24px 80px rgba(91, 64, 35, 0.24);
+    display: grid;
+    gap: 14px;
+}
+
+.task-modal-header h2 {
+    margin: 0;
+    color: var(--color-text-title);
+}
+
+.task-modal label {
+    display: grid;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.task-modal input,
+.task-modal textarea,
+.task-modal select {
+    border: 1px solid #E5D8BF;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font: inherit;
+    background: #FFFDF8;
+    color: var(--color-text-dark);
+    outline: none;
+}
+
+.task-modal input:focus,
+.task-modal textarea:focus,
+.task-modal select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(163, 107, 61, 0.12);
+}
+
+.task-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.task-modal-actions .btn-outline,
+.task-modal-actions .btn-primary {
+    width: auto;
+}
+
+.focus-options {
+    display: grid;
+    gap: 10px;
+}
+
+.focus-option {
+    width: 100%;
+    text-align: left;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    padding: 14px;
+    background: #FFFDF8;
+    color: var(--color-text-title);
+    cursor: pointer;
+    display: grid;
+    gap: 4px;
+}
+
+.focus-option:hover,
+.focus-option.is-current {
+    border-color: var(--color-secondary);
+    background: #FFF1D2;
+}
+
+.focus-option small {
+    color: var(--color-text-subtitle);
+}
+
+.focus-card .focus-card-title {
+    color: var(--color-primary);
+}
+
+.focus-card .focus-card-note {
+    font-size: 0.85rem;
+}
+
+
+/*
+============================================================
+FOOTER STYLES
+============================================================
+*/
+
+.iremind-footer {
+    /* Matches the page’s bottom background color */
+    background-color: var(--color-bg-light);
+    
+    /* NEW: subtle line between main content and footer */
+    border-top: 1px solid #D4C7A3; /* Soft brown matching overall theme */
+    
+    padding: 40px 32px; 
+    margin-top: 60px; /* Comfortable space above footer */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; 
+
+    font-family: 'Poppins', sans-serif; 
+    text-align: center;
+}
+
+/* Large brand name at the top */
+.footer-brand {
+    font-weight: 700; 
+    font-size: 1.6rem; 
+    letter-spacing: 1px;
+    color: var(--color-primary); /* Dark brown brand color */
+    text-transform: uppercase;
+}
+
+/* SOCIAL MEDIA ICONS */
+.social-links {
+    display: flex;
+    gap: 1rem; 
+    margin-bottom: 5px; 
+}
+
+.social-links a {
+    color: var(--color-secondary); /* Vivid mustard */
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--color-primary); /* Dark brown on hover */
+}
+
+
+/* Bottom row: copyright and links */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    font-size: 0.85rem; 
+    color: var(--color-text-muted); /* Muted tone for copyright text */
+    font-weight: 400; 
+}
+
+/* Links block */
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem; /* Increased spacing */
+}
+
+.footer-links a {
+    color: var(--color-text-muted); /* Links also in muted tone */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s ease; 
+}
+
+.footer-links a:hover {
+    color: var(--color-primary); /* Dark brown on hover */
+    text-decoration: underline; /* More visible hover effect */
+}
+
+/* Separator dots */
+.dot {
+    /* Use border color for better visibility */
+    color: var(--color-border); 
+    font-weight: normal;
+    font-size: 1.1rem;
+}
+
+/* ---------------------------------------------------- */
+/* 5. RESPONSIVE STYLES – TABLET & MOBILE               */
+/* ---------------------------------------------------- */
+
+/* Tablet / small laptop (≤ 950px) */
+@media (max-width: 950px) {
+
+    /* Prevent horizontal scrollbar */
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Sidebar + main stack vertically */
+    .app-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 1rem;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    /* Sidebar full width on top */
+    .sidebar {
+        width: 100%;
+        border-radius: 1.25rem;
+    }
+
+    /* Main card full width under sidebar */
+    .main {
+        max-width: 100%;
+        width: 100%;
+        margin-left: 0;
+        padding: 20px;
+        border-radius: 1.25rem;
+    }
+
+    /* Tasks and side-column become one column */
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    /* Header becomes vertical */
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .header-left-group {
+        width: 100%;
+        order: 2;
+    }
+
+    .header-right-group {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        order: 1;
+        margin-top: 0;
+        padding-right: 0;
+        gap: 14px;
+    }
+
+    /* Search + new task stacked */
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .search-wrapper {
+        max-width: none;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+
+    /* Filters can scroll horizontally */
+    .filters {
+        flex-wrap: nowrap;
+    }
+}
+
+/* Phone (≤ 600px) */
+@media (max-width: 600px) {
+
+    /* Completely hide sidebar on small phones */
+    .sidebar {
+        display: none;
+    }
+
+    .app-container {
+        padding: 0.75rem;
+    }
+
+    .main {
+        padding: 16px;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Date + avatar stack nicely */
+    .header-right-group {
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        gap: 8px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    /* Task cards more compact vertically */
+    .task-card {
+        padding: 16px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .task-checkbox {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .side-card {
+        padding: 16px;
+    }
+}

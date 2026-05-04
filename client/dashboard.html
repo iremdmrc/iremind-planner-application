@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — Iremind</title>
+  <link rel="icon" href="/logo.png" />
+  <link rel="stylesheet" href="/src/index.css" />
+  <link rel="stylesheet" href="/src/dashboard-custom.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- SIDEBAR -->
+<aside class="sidebar">
+            
+            <!-- Logo -->
+            <div class="sidebar-logo">
+                Iremind<span class="logo-dot">.</span>
+            </div>
+
+            <!-- Menü Öğeleri -->
+            <nav class="sidebar-nav">
+                <!-- Dashboard (Active) -->
+                <a href="dashboard.html" class="menu-item active">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+                <!-- Calendar -->
+                <a href="calendar.html" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i> Calendar
+                </a>
+
+                <a href="todo.html" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i> To-Do List
+                </a>
+
+                <a href="notes.html" class="menu-item">
+                    <i class="fas fa-sticky-note"></i> Notes
+                </a>
+
+                <div class="menu-item">
+                    <i class="fas fa-bell"></i> Reminder
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-comment-dots"></i> Chats
+                    <span class="menu-item-badge">3</span>
+                </div>
+
+
+            </nav>
+
+            <!-- Alıntı Kartı -->
+            <div class="quote-card">
+                <div class="quote-card-tag">Today’s reminder</div>
+                <p>“Every focused minute moves you forward.”</p>
+                <p class="quote-card-author">— Iremind</p>
+            </div>
+
+            <!-- Yükseltme Kartı -->
+            <div class="upgrade-card">
+                <h3>Upgrade your plan</h3>
+                <p>Your trial ends in 12 days. Unlock full potential.</p>
+                <button class="upgrade-card-button">
+                    See plans
+                </button>
+            </div>
+            
+            <!-- Alt Menü (Ayarlar/Çıkış) -->
+            <div class="sidebar-footer">
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+
+
+               <a href="index.html" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </a>
+
+            </div>
+        </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- HEADER -->
+      <header class="header">
+
+        
+        <div class="dashboard-title-stack">
+          <h1 class="page-title">Dashboard</h1>
+          <p class="welcome-message" id="welcome-message"></p>
+        </div>
+
+        <div class="search-bar">
+          <input type="text" placeholder="Search or type a command" />
+        </div>
+
+        <div class="user-actions">
+          <a href="settings.html" class="header-settings-link">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+          <div class="user-profile">
+            <img src="./images/avatar.jpg" alt="User Avatar" />
+          </div>
+        </div>
+      </header>
+
+      <!-- RECOMMENDED CATEGORIES -->
+      <section class="recommended-categories">
+        <h1>Recommended Categories</h1>
+
+        <div class="categories-grid">
+          <a href="notes.html" class="category-card">
+            <div class="category-icon">
+              <img src="./images/note.png" alt="Create a Note icon" />
+            </div>
+            <span class="category-label">Create a Note</span>
+          </a>
+
+          <a href="todo.html" class="category-card">
+            <div class="category-icon">
+              <img src="./images/task.png" alt="Add Task icon" />
+            </div>
+            <span class="category-label">Add Task</span>
+          </a>
+
+          <a href="calendar.html" class="category-card">
+            <div class="category-icon">
+              <img src="./images/event.png" alt="Add Event icon" />
+            </div>
+            <span class="category-label">Add Event</span>
+          </a>
+
+          <a href="mind-map.html" class="category-card">
+            <div class="category-icon">
+              <img src="./images/planner.png" alt="Mind Map Tree icon" />
+            </div>
+            <span class="category-label">Mind Map Tree</span>
+          </a>
+
+          <a href="pomodoro.html" class="category-card">
+            <div class="category-icon">
+              <img src="./images/pomodoro.png" alt="Pomodoro icon" />
+            </div>
+            <span class="category-label">Study Session (Pomodoro)</span>
+          </a>
+
+          <button class="category-card">
+            <div class="category-icon">
+              <img src="./images/upload.png" alt="Upload Document icon" />
+            </div>
+            <span class="category-label">Upload Document</span>
+          </button>
+
+          <a href="study-timer.html" class="category-card">
+            <div class="category-icon">
+              <img src="./images/goals.png" alt="Goals icon" />
+            </div>
+            <span class="category-label">Study Timer</span>
+          </a>
+
+          <a href="journal.html" class="category-card">
+            <div class="category-icon">
+              <img src="./images/journal.png" alt="Journal icon" />
+            </div>
+            <span class="category-label">Reflection / Journal</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- PROJECT TO-DO + INSIGHTS -->
+      <div class="max-w-7xl mx-auto bg-white shadow-xl rounded-xl">
+        <!-- TO-DO HEADER -->
+        <div>
+          <h1 class="project-to-do">
+            <span>Project</span> To-Do List
+          </h1>
+        </div>
+
+        <!-- TABLE HEADER -->
+        <div class="task-grid-header">
+          <div class="text-left">TASK NAME</div>
+          <div class="text-center">OWNER</div>
+          <div class="text-center">PROGRESS</div>
+          <div class="text-center">STATUS</div>
+          <div class="text-center">DATE</div>
+        </div>
+
+        <!-- TASK ROWS -->
+        <div id="task-list-container">
+          <!-- TASK 1 -->
+          <div class="task-row highlighted">
+            <div class="text-gray-800 font-semibold">
+              Schedule Me An Appointment With My Endocrine
+              <span class="text-xs text-gray-400 ml-2">(Apple/iCloud)</span>
+            </div>
+            <div class="owner-group">
+              <span class="owner-icon bg-red-300 flex items-center justify-center text-xs font-bold text-white">F</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" style="width: 0%;"></div>
+            </div>
+            <div class="flex justify-center">
+              <span class="status-tag status-todo">To Do</span>
+            </div>
+            <div class="text-right text-sm text-gray-500">15 Days left</div>
+          </div>
+
+          <!-- TASK 2 -->
+          <div class="task-row highlighted">
+            <div class="text-gray-800 font-semibold">
+              Plan An Event
+              <span class="text-xs text-gray-400 ml-2">(Planning)</span>
+            </div>
+            <div class="owner-group">
+              <span class="owner-icon bg-purple-300 flex items-center justify-center text-xs font-bold text-white">D</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" style="width: 26%;"></div>
+            </div>
+            <div class="flex justify-center">
+              <span class="status-tag status-working">Working on it</span>
+            </div>
+            <div class="text-right text-sm text-gray-500">32 Days left</div>
+          </div>
+
+          <!-- TASK 3 -->
+          <div class="task-row highlighted">
+            <div class="text-gray-800 font-semibold">Finalize kickoff materials</div>
+            <div class="owner-group">
+              <span class="owner-icon bg-pink-300 flex items-center justify-center text-xs font-bold text-white">A</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" style="width: 100%;"></div>
+            </div>
+            <div class="flex justify-center">
+              <span class="status-tag status-done">Done</span>
+            </div>
+            <div class="text-right text-sm text-gray-500">Sep 02</div>
+          </div>
+
+          <!-- TASK 4 -->
+          <div class="task-row highlighted">
+            <div class="text-gray-800 font-semibold">Test plan</div>
+            <div class="owner-group">
+              <span class="owner-icon bg-cyan-300 flex items-center justify-center text-xs font-bold text-white">E</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" style="width: 10%;"></div>
+            </div>
+            <div class="flex justify-center">
+              <span class="status-tag status-stuck">Stuck</span>
+            </div>
+            <div class="text-right text-sm text-gray-500">Sep 17</div>
+          </div>
+
+          <!-- NEW TASK BUTTON -->
+          <button id="add-new-task-btn" class="btn-new-task">
+            + NEW TASK
+          </button>
+        </div>
+
+        <!-- INSIGHTS SECTION -->
+        <section class="insights-section">
+          <!-- LEFT: TOTAL LEARNING TIME -->
+          <article class="learning-card">
+            <header class="learning-header">
+              <div>
+                <h1 class="learning-title">Total learning time</h1>
+                <p class="learning-subtitle">Overview</p>
+              </div>
+
+              <!-- Pure HTML/CSS dropdown -->
+              <div class="learning-range-select">
+                <input type="checkbox" id="range-toggle" class="range-toggle" />
+                <label for="range-toggle" class="learning-range-badge" id="learning-range-label">
+                  Last 15 days ▾
+                </label>
+
+                <div class="range-dropdown">
+                  <button class="range-option" data-learning-range="daily">Daily</button>
+                  <button class="range-option" data-learning-range="weekly">Weekly</button>
+                  <button class="range-option" data-learning-range="monthly">Monthly</button>
+                  <button class="range-option">Custom range…</button>
+                </div>
+              </div>
+            </header>
+
+            <div class="learning-chart">
+              <!-- Y AXIS LABELS -->
+              <div class="chart-y-axis">
+                <span>4h 30m</span>
+                <span>2h 30m</span>
+                <span>1h 30m</span>
+                <span>45m</span>
+                <span>15m</span>
+                <span>0m</span>
+              </div>
+
+              <!-- BARS -->
+              <div class="chart-bars">
+                <!-- Aug 15 -->
+                <div class="day-column">
+                  <span class="bar-total">1h 15m</span>
+                  <div class="day-bar" title="Videos: 45m · Live classes: 30m · Quizzes: 0m">
+                    <div class="bar-segment bar-live" style="height: 30%;"></div>
+                    <div class="bar-segment bar-video" style="height: 45%;"></div>
+                  </div>
+                  <span class="day-label">Aug 15</span>
+                </div>
+
+                <!-- Aug 16 -->
+                <div class="day-column">
+                  <span class="bar-total">2h 0m</span>
+                  <div class="day-bar" title="Videos: 30m · Live classes: 1h 30m · Quizzes: 0m">
+                    <div class="bar-segment bar-live" style="height: 60%;"></div>
+                    <div class="bar-segment bar-video" style="height: 20%;"></div>
+                  </div>
+                  <span class="day-label">Aug 16</span>
+                </div>
+
+                <!-- Aug 17 -->
+                <div class="day-column">
+                  <span class="bar-total">1h 30m</span>
+                  <div class="day-bar" title="Videos: 30m · Live classes: 1h · Quizzes: 0m">
+                    <div class="bar-segment bar-live" style="height: 40%;"></div>
+                    <div class="bar-segment bar-video" style="height: 25%;"></div>
+                  </div>
+                  <span class="day-label">Aug 17</span>
+                </div>
+
+                <!-- Aug 18 -->
+                <div class="day-column">
+                  <span class="bar-total">1h 0m</span>
+                  <div class="day-bar" title="Videos: 20m · Live classes: 40m · Quizzes: 0m">
+                    <div class="bar-segment bar-live" style="height: 35%;"></div>
+                    <div class="bar-segment bar-video" style="height: 20%;"></div>
+                  </div>
+                  <span class="day-label">Aug 18</span>
+                </div>
+
+                <!-- Aug 19 -->
+                <div class="day-column">
+                  <span class="bar-total">2h 20m</span>
+                  <div class="day-bar" title="Videos: 30m · Live classes: 1h 30m · Quizzes: 20m">
+                    <div class="bar-segment bar-live" style="height: 50%;"></div>
+                    <div class="bar-segment bar-quiz" style="height: 15%;"></div>
+                    <div class="bar-segment bar-video" style="height: 20%;"></div>
+                  </div>
+                  <span class="day-label">Aug 19</span>
+                </div>
+
+                <!-- Aug 20 -->
+                <div class="day-column">
+                  <span class="bar-total">3h 30m</span>
+                  <div class="day-bar" title="Videos: 45m · Live classes: 2h 45m · Quizzes: 0m">
+                    <div class="bar-segment bar-live" style="height: 70%;"></div>
+                    <div class="bar-segment bar-video" style="height: 25%;"></div>
+                  </div>
+                  <span class="day-label">Aug 20</span>
+                </div>
+
+                <!-- Aug 21 -->
+                <div class="day-column">
+                  <span class="bar-total">2h 10m</span>
+                  <div class="day-bar" title="Videos: 40m · Live classes: 1h 30m · Quizzes: 0m">
+                    <div class="bar-segment bar-live" style="height: 55%;"></div>
+                    <div class="bar-segment bar-video" style="height: 25%;"></div>
+                  </div>
+                  <span class="day-label">Aug 21</span>
+                </div>
+
+                <!-- Aug 22 -->
+                <div class="day-column">
+                  <span class="bar-total">2h 30m</span>
+                  <div class="day-bar" title="Videos: 45m · Live classes: 1h 30m · Quizzes: 15m">
+                    <div class="bar-segment bar-live" style="height: 50%;"></div>
+                    <div class="bar-segment bar-quiz" style="height: 15%;"></div>
+                    <div class="bar-segment bar-video" style="height: 25%;"></div>
+                  </div>
+                  <span class="day-label">Aug 22</span>
+                </div>
+
+                <!-- Aug 23 -->
+                <div class="day-column">
+                  <span class="bar-total">1h 10m</span>
+                  <div class="day-bar" title="Videos: 20m · Live classes: 40m · Quizzes: 10m">
+                    <div class="bar-segment bar-live" style="height: 35%;"></div>
+                    <div class="bar-segment bar-quiz" style="height: 10%;"></div>
+                    <div class="bar-segment bar-video" style="height: 20%;"></div>
+                  </div>
+                  <span class="day-label">Aug 23</span>
+                </div>
+
+                <!-- Aug 24 -->
+                <div class="day-column">
+                  <span class="bar-total">2h 20m</span>
+                  <div class="day-bar" title="Videos: 40m · Live classes: 1h 40m · Quizzes: 0m">
+                    <div class="bar-segment bar-live" style="height: 60%;"></div>
+                    <div class="bar-segment bar-video" style="height: 25%;"></div>
+                  </div>
+                  <span class="day-label">Aug 24</span>
+                </div>
+
+                <!-- Aug 25 -->
+                <div class="day-column">
+                  <span class="bar-total">3h 0m</span>
+                  <div class="day-bar" title="Videos: 1h · Live classes: 2h · Quizzes: 0m">
+                    <div class="bar-segment bar-live" style="height: 60%;"></div>
+                    <div class="bar-segment bar-video" style="height: 35%;"></div>
+                  </div>
+                  <span class="day-label">Aug 25</span>
+                </div>
+
+                <!-- Aug 26 -->
+                <div class="day-column">
+                  <span class="bar-total">2h 15m</span>
+                  <div class="day-bar" title="Videos: 40m · Live classes: 1h 10m · Quizzes: 25m">
+                    <div class="bar-segment bar-live" style="height: 45%;"></div>
+                    <div class="bar-segment bar-quiz" style="height: 18%;"></div>
+                    <div class="bar-segment bar-video" style="height: 22%;"></div>
+                  </div>
+                  <span class="day-label">Aug 26</span>
+                </div>
+
+                <!-- Aug 27 -->
+                <div class="day-column">
+                  <span class="bar-total">1h 40m</span>
+                  <div class="day-bar" title="Videos: 35m · Live classes: 1h 5m · Quizzes: 0m">
+                    <div class="bar-segment bar-live" style="height: 45%;"></div>
+                    <div class="bar-segment bar-video" style="height: 25%;"></div>
+                  </div>
+                  <span class="day-label">Aug 27</span>
+                </div>
+
+                <!-- Aug 28 -->
+                <div class="day-column">
+                  <span class="bar-total">1h 30m</span>
+                  <div class="day-bar" title="Videos: 30m · Live classes: 1h · Quizzes: 0m">
+                    <div class="bar-segment bar-live" style="height: 40%;"></div>
+                    <div class="bar-segment bar-video" style="height: 25%;"></div>
+                  </div>
+                  <span class="day-label">Aug 28</span>
+                </div>
+
+                <!-- Aug 29 -->
+                <div class="day-column">
+                  <span class="bar-total">2h 0m</span>
+                  <div class="day-bar" title="Videos: 40m · Live classes: 1h 20m · Quizzes: 0m">
+                    <div class="bar-segment bar-live" style="height: 50%;"></div>
+                    <div class="bar-segment bar-video" style="height: 30%;"></div>
+                  </div>
+                  <span class="day-label">Aug 29</span>
+                </div>
+              </div>
+
+              <!-- LEGEND -->
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <span class="legend-dot legend-video"></span> Study Timer
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot legend-live"></span> Pomodoro / Focus
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot legend-quiz"></span> Saved sessions
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- RIGHT: UPCOMING EVENTS -->
+          <aside class="events-card">
+            <header class="events-header">
+              <h2 class="events-title">Upcoming events</h2>
+              <p class="events-subtitle">Next 7 days</p>
+            </header>
+
+            <ul class="events-list">
+              <li class="event-item">
+                <div class="event-date pretty-date">
+                  <span class="event-day">24</span>
+                  <span class="event-month">NOV</span>
+                </div>
+                <div class="event-content">
+                  <div class="event-title">Art Club – Canvas Painting</div>
+                  <div class="event-meta">3:00 PM – Student Center 210</div>
+                </div>
+              </li>
+
+              <li class="event-item">
+                <div class="event-date pretty-date">
+                  <span class="event-day">26</span>
+                  <span class="event-month">NOV</span>
+                </div>
+                <div class="event-content">
+                  <div class="event-title">Live Study Session – Calculus</div>
+                  <div class="event-meta">7:00 PM · Zoom</div>
+                </div>
+              </li>
+
+              <li class="event-item">
+                <div class="event-date pretty-date">
+                  <span class="event-day">28</span>
+                  <span class="event-month">NOV</span>
+                </div>
+                <div class="event-content">
+                  <div class="event-title">Database Systems Quiz</div>
+                  <div class="event-meta">11:59 PM · Online</div>
+                </div>
+              </li>
+
+              <li class="event-item">
+                <div class="event-date pretty-date">
+                  <span class="event-day">29</span>
+                  <span class="event-month">NOV</span>
+                </div>
+                <div class="event-content">
+                  <div class="event-title">Weekly planning & reflection</div>
+                  <div class="event-meta">Any time · Personal reminder</div>
+                </div>
+              </li>
+            </ul>
+          </aside>
+        </section>
+      </div>
+    </main>
+  </div>
+
+<footer class="iremind-footer">
+    <div class="footer-main">
+        <span class="footer-brand">iREMIND</span>
+    </div>
+    
+    <div class="social-links">
+        <a href="#" aria-label="iREMIND Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="iREMIND Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="iREMIND Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="iREMIND YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <div class="footer-bottom">
+        <span>© 2025 iREMIND. All rights reserved.</span>
+        <div class="footer-links">
+            <a href="#">Privacy</a>
+            <span class="dot">•</span>
+            <a href="#">Terms</a>
+            <span class="dot">•</span>
+            <a href="#">Support</a>
+        </div>
+    </div>
+</footer>
+
+  <script type="module" src="/src/app-shell.js"></script>
+  <script type="module" src="/src/dashboard.js"></script>
+</body>
+</html>

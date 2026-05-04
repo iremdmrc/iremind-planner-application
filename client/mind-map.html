@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mind Map Tree - Iremind</title>
+  <link rel="stylesheet" href="/src/study.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body class="mind-full-page mind-minimal-page">
+  <div class="study-shell">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Iremind<span class="logo-dot">.</span></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="calendar.html" class="menu-item"><i class="fas fa-calendar-alt"></i> Calendar</a>
+        <a href="todo.html" class="menu-item"><i class="fas fa-calendar-alt"></i> To-Do List</a>
+        <a href="notes.html" class="menu-item"><i class="fas fa-sticky-note"></i> Notes</a>
+        <div class="menu-item"><i class="fas fa-bell"></i> Reminder</div>
+        <div class="menu-item"><i class="fas fa-comment-dots"></i> Chats <span class="menu-item-badge">3</span></div>
+      </nav>
+      <div class="quote-card">
+        <div class="quote-card-tag">Today's reminder</div>
+        <p>"Every focused minute moves you forward."</p>
+        <p class="quote-card-author">- Iremind</p>
+      </div>
+      <div class="upgrade-card">
+        <h3>Upgrade your plan</h3>
+        <p>Your trial ends in 12 days. Unlock full potential.</p>
+        <button class="upgrade-card-button">See plans</button>
+      </div>
+      <div class="sidebar-footer">
+        <a href="settings.html" class="menu-item"><i class="fas fa-cog"></i> Settings</a>
+        <a href="index.html" class="menu-item"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <main class="study-main mind-main">
+      <header class="mind-topbar">
+        <div class="mind-tabs">
+          <a class="mind-tab active" href="mind-map.html">Mind Map</a>
+          <a class="mind-tab" href="dashboard.html">Dashboard</a>
+        </div>
+        <nav class="mind-tools" aria-label="Mind map tools">
+          <button class="shape-tool" data-add-shape="topic" type="button">
+            <span class="shape-preview preview-topic"></span><span>Topic</span>
+          </button>
+          <button class="shape-tool" data-add-shape="subtopic" type="button">
+            <span class="shape-preview preview-subtopic"></span><span>Subtopic</span>
+          </button>
+          <button class="shape-tool" data-add-shape="terminator" type="button">
+            <span class="shape-preview preview-terminator"></span><span>Start</span>
+          </button>
+          <button class="shape-tool" data-add-shape="decision" type="button">
+            <span class="shape-preview preview-decision"></span><span>Decision</span>
+          </button>
+          <button class="shape-tool" data-add-shape="data" type="button">
+            <span class="shape-preview preview-data"></span><span>Data</span>
+          </button>
+          <button id="connect-node" type="button"><i class="fas fa-link"></i><span>Connect</span></button>
+          <button id="delete-node" type="button"><i class="fas fa-trash"></i><span>Delete</span></button>
+        </nav>
+        <div class="mind-top-actions">
+          <button data-mind-theme="soft" class="active" type="button">Clean</button>
+          <button data-mind-theme="flow" type="button">Warm</button>
+          <button data-mind-theme="bubble" type="button">Blue</button>
+        </div>
+      </header>
+
+      <section class="mind-workspace">
+        <aside class="mind-panel mind-inspector">
+          <h2>Selected topic</h2>
+          <input id="node-label" placeholder="Topic name" maxlength="80" />
+          <textarea id="node-note" placeholder="Short note" rows="4"></textarea>
+          <select id="node-color">
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="rose">Rose</option>
+            <option value="gold">Gold</option>
+            <option value="purple">Purple</option>
+            <option value="mint">Mint</option>
+            <option value="black">Black</option>
+          </select>
+          <div class="mind-color-swatches" aria-label="Topic colors">
+            <button class="swatch swatch-blue" data-color-choice="blue" type="button" title="Blue"></button>
+            <button class="swatch swatch-green" data-color-choice="green" type="button" title="Green"></button>
+            <button class="swatch swatch-rose" data-color-choice="rose" type="button" title="Rose"></button>
+            <button class="swatch swatch-gold" data-color-choice="gold" type="button" title="Gold"></button>
+            <button class="swatch swatch-purple" data-color-choice="purple" type="button" title="Purple"></button>
+            <button class="swatch swatch-mint" data-color-choice="mint" type="button" title="Mint"></button>
+            <button class="swatch swatch-black" data-color-choice="black" type="button" title="Black"></button>
+          </div>
+          <div class="mind-actions">
+            <button class="primary-pill" id="save-node" type="button">Save changes</button>
+            <button class="ghost-pill" id="clear-screen" type="button">Clear screen</button>
+          </div>
+        </aside>
+
+        <section class="mind-tree-card mind-theme-soft manual-mind-card" id="mind-tree-card">
+          <svg class="mind-lines" id="mind-lines"></svg>
+          <div class="mind-canvas" id="mind-tree"></div>
+        </section>
+        <nav class="mind-screen-tabs" id="mind-screen-tabs" aria-label="Mind map screens"></nav>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/src/app-shell.js"></script>
+  <script type="module" src="/src/mind-map.js"></script>
+</body>
+</html>

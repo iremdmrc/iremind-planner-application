@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Study Timer - Iremind</title>
+  <link rel="stylesheet" href="/src/study.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body class="focus-page">
+  <div class="study-shell">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Iremind<span class="logo-dot">.</span></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="calendar.html" class="menu-item"><i class="fas fa-calendar-alt"></i> Calendar</a>
+        <a href="todo.html" class="menu-item"><i class="fas fa-calendar-alt"></i> To-Do List</a>
+        <a href="notes.html" class="menu-item"><i class="fas fa-sticky-note"></i> Notes</a>
+        <div class="menu-item"><i class="fas fa-bell"></i> Reminder</div>
+        <div class="menu-item"><i class="fas fa-comment-dots"></i> Chats <span class="menu-item-badge">3</span></div>
+      </nav>
+      <div class="quote-card">
+        <div class="quote-card-tag">Today's reminder</div>
+        <p>"Every focused minute moves you forward."</p>
+        <p class="quote-card-author">- Iremind</p>
+      </div>
+      <div class="upgrade-card">
+        <h3>Upgrade your plan</h3>
+        <p>Your trial ends in 12 days. Unlock full potential.</p>
+        <button class="upgrade-card-button">See plans</button>
+      </div>
+      <div class="sidebar-footer">
+        <a href="settings.html" class="menu-item"><i class="fas fa-cog"></i> Settings</a>
+        <a href="index.html" class="menu-item"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      </div>
+    </aside>
+    <main class="study-main focus-main">
+      <section class="focus-scene timer-scene">
+        <iframe
+          class="focus-video-bg"
+          src="https://www.youtube.com/embed/vx5Jl5clrUI?autoplay=1&mute=0&controls=0&loop=1&playlist=vx5Jl5clrUI&start=120&playsinline=1&rel=0&modestbranding=1"
+          title="Study background video"
+          allow="autoplay; encrypted-media"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+        <section class="focus-setup" id="focus-setup">
+          <div class="focus-setup-card">
+            <span class="focus-setup-kicker">Choose your focus theme</span>
+            <h1>Ready to study?</h1>
+            <div class="focus-theme-grid">
+              <button type="button" class="focus-theme-choice active" data-focus-theme="pink">
+                <span>Pink focus</span>
+                <small>starts at 2:00</small>
+              </button>
+              <button type="button" class="focus-theme-choice" data-focus-theme="journal">
+                <span>Soft journal</span>
+                <small>new background</small>
+              </button>
+            </div>
+            <div class="focus-history">
+              <h2>Study history</h2>
+              <table>
+                <thead><tr><th>Date</th><th>Sessions</th><th>Time</th></tr></thead>
+                <tbody id="focus-history-body"></tbody>
+              </table>
+            </div>
+            <button type="button" class="focus-start-study" id="focus-start-study">Start studying</button>
+          </div>
+        </section>
+        <header class="focus-topbar" aria-hidden="true"></header>
+
+        <div class="focus-center">
+          <input class="focus-title-input" id="session-title" placeholder="What are you studying?" value="Study session" />
+          <div class="multi-timer-tabs" id="timer-tabs"></div>
+          <div class="big-timer focus-time" id="timer-display">00:00:00</div>
+          <div class="timer-actions focus-actions">
+            <button class="primary-pill focus-start" id="timer-start">start</button>
+            <button class="icon-pill" id="timer-pause" title="Pause"><i class="fas fa-pause"></i></button>
+            <button class="icon-pill" id="timer-reset" title="Reset"><i class="fas fa-redo-alt"></i></button>
+            <button class="icon-pill" id="timer-save" title="Save"><i class="fas fa-save"></i></button>
+            <button class="icon-pill" id="timer-add" title="Add timer"><i class="fas fa-plus"></i></button>
+            <button class="icon-pill" id="timer-delete" title="Delete timer"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/src/app-shell.js"></script>
+  <script type="module" src="/src/focus-page.js"></script>
+  <script type="module" src="/src/study-timer.js"></script>
+</body>
+</html>

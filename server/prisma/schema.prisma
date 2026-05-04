@@ -1,0 +1,124 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  displayName  String
+  avatarUrl    String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  notebooks    Notebook[]
+  notes        Note[]
+  tasks        Task[]
+  events       Event[]
+  studySessions StudySession[]
+  journalEntries JournalEntry[]
+  mindMapNodes MindMapNode[]
+}
+
+model Notebook {
+  id        String   @id @default(cuid())
+  title     String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  notes     Note[]
+}
+
+model Note {
+  id         String   @id @default(cuid())
+  title      String   @default("Untitled note")
+  content    String
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  notebookId String?
+  notebook   Notebook? @relation(fields: [notebookId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+enum TaskStatus {
+  TODO
+  WORKING
+  STUCK
+  DONE
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+model Task {
+  id        String       @id @default(cuid())
+  title     String
+  note      String?
+  userId    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status    TaskStatus   @default(TODO)
+  priority  TaskPriority @default(MEDIUM)
+  dueDate   DateTime?
+  isFocus   Boolean      @default(false)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model Event {
+  id        String    @id @default(cuid())
+  title     String
+  note      String?
+  startsAt  DateTime
+  endsAt    DateTime?
+  color     String?
+  visibility String    @default("PRIVATE")
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model StudySession {
+  id        String   @id @default(cuid())
+  title     String   @default("Study session")
+  minutes   Int
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model JournalEntry {
+  id        String   @id @default(cuid())
+  title     String   @default("Journal entry")
+  content   String
+  mood      String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model MindMapNode {
+  id        String   @id @default(cuid())
+  label     String
+  note      String?
+  parentId  String?
+  color     String   @default("green")
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

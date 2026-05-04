@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login — Iremind</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="./images/first-logo.png" />
+    
+    <link rel="stylesheet" href="/src/auth.css" /> 
+</head>
+
+<body class="auth-page">
+
+  <video id="bg-video" autoplay loop muted playsinline>
+    <source src="./videos/background.mp4" type="video/mp4">
+</video>
+
+
+    <main class="auth">
+        <div class="auth-container-wrapper">
+            
+            <div class="illustration-panel">
+                <img class="loginimg" src="./images/loginimg.png" alt="">
+                </div>
+
+            <div class="auth-card">
+                
+              <header>
+    <div class="logo-area">
+        <img src="./images/first-logo.png" alt="Iremind Logo" />
+        <span>iREMIND</span>
+    </div>
+    
+    <div class="dropdown settings-menu">
+        <button class="dropbtn" type="button">Settings</button>
+        <div class="dropdown-content">
+            <button type="button" data-auth-theme="light">Light theme</button>
+            <button type="button" data-auth-theme="dark">Dark theme</button>
+            <div class="language-menu">
+                <button class="language-trigger" type="button">Languages</button>
+                <div class="language-options">
+                    <button type="button" data-auth-lang="en">English</button>
+                    <button type="button" data-auth-lang="tr">Turkish</button>
+                    <button type="button" data-auth-lang="es">Spanish</button>
+                    <button type="button" data-auth-lang="fr">French</button>
+                    <button type="button" data-auth-lang="de">German</button>
+                </div>
+            </div>
+            <a href="mailto:iremdemircii61@gmail.com">Help Center</a>
+        </div>
+    </div>
+    </header>
+
+                <h1 data-i18n="loginTitle">Login to Iremind</h1>
+                <p class="subtitle" data-i18n="loginSubtitle">Welcome back! Please enter your details.</p>
+                
+                <form id="login-form" class="form">
+                    <label>
+                        <span data-i18n="email">Email</span>
+                        <input data-i18n-placeholder="emailPlaceholder" type="email" name="email" required autocomplete="email" placeholder="Enter your email address"  />
+                    </label> 
+                    
+                    <label>
+                        <span data-i18n="password">Password</span>
+                        <input data-i18n-placeholder="passwordPlaceholder" type="password" name="password" required autocomplete="current-password" placeholder="Enter your password" />
+                    </label>
+
+                    <div class="quick-login-card">
+        <h3 class="quick-login-title">Quick Login</h3>
+        <p class="quick-login-subtitle">Scan with the iREMIND app</p>
+        <img src="./images/qr-login.png" class="quick-login-code">
+    </div>
+                    
+                    <button class="btn btn-primary btn-full-width" type="submit">
+                        <span data-i18n="signIn">Sign in</span>
+                    </button>
+
+                    <p class="social-login-separator">OR SIGN IN WITH:</p>
+                    
+                    <div class="social-login">
+                        <a href="#" class="social-icon facebook">F</a>
+                        <a href="#" class="social-icon twitter">t</a>
+                        <a href="#" class="social-icon google">G+</a>
+                    </div>
+                </form>
+                
+                <p class="muted">
+  <span data-i18n="noAccount">No account?</span> <a href="register.html" class="link-primary" data-i18n="registerNow">Register now</a>
+</p>
+            </div>
+            </div>
+        </main>
+
+<script type="module" src="/src/auth.js"></script>
+
+
+</body>
+</html>

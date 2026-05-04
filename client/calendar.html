@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sundays. Calendar</title>
+    <!-- Font ve İkon Kütüphaneleri -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Harici CSS dosyasını bağlama -->
+    <link rel="stylesheet" href="/src/calendar.css">
+
+</head>
+<body class="antialiased">
+
+    <!-- Ana Uygulama Konteyneri -->
+    <div class="app-container">
+        
+        <!-- Sidebar (Sol Menü) -->
+        <aside class="sidebar">
+            
+            <!-- Logo -->
+            <div class="sidebar-logo">
+                Iremind<span class="logo-dot">.</span>
+            </div>
+
+            <!-- Menü Öğeleri -->
+            <nav class="sidebar-nav">
+                <!-- Dashboard (Active) -->
+                <a href="dashboard.html" class="menu-item">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+                <!-- Calendar -->
+                <a href="calendar.html" class="menu-item active">
+                    <i class="fas fa-calendar-alt"></i> Calendar
+                </a>
+
+                <a href="todo.html" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i> To-Do List
+                </a>
+                <a href="notes.html" class="menu-item">
+                    <i class="fas fa-sticky-note"></i> Notes
+                </a>
+                <div class="menu-item">
+                    <i class="fas fa-bell"></i> Reminder
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-comment-dots"></i> Chats
+                    <span class="menu-item-badge">3</span>
+                </div>
+            </nav>
+
+            <!-- Alıntı Kartı -->
+            <div class="quote-card">
+                <div class="quote-card-tag">Today’s reminder</div>
+                <p>“Every focused minute moves you forward.”</p>
+                <p class="quote-card-author">— Iremind</p>
+            </div>
+
+            <!-- Yükseltme Kartı -->
+            <div class="upgrade-card">
+                <h3>Upgrade your plan</h3>
+                <p>Your trial ends in 12 days. Unlock full potential.</p>
+                <button class="upgrade-card-button">
+                    See plans
+                </button>
+            </div>
+            
+            <!-- Alt Menü (Ayarlar/Çıkış) -->
+            <div class="sidebar-footer">
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+
+               <a href="index.html" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Ana İçerik Alanı -->
+        <main class="main-content">
+            
+            <!-- Başlık ve Arama Kutusu -->
+            <header class="header">
+                <div class="header-title-area">
+                    <!-- Breadcrumb -->
+                    <div class="breadcrumb">
+                        Sundays <span class="mx-1">/</span> <span>Calendar</span>
+                    </div>
+                    <h1 class="page-title">Calendar</h1>
+                </div>
+                
+                <!-- Arama Kutusu -->
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input id="event-search" type="text" placeholder="Search events..." class="search-input">
+                </div>
+                <div class="user-actions">
+                    <div class="user-profile">
+                        <img src="./images/avatar.jpg" alt="User Avatar">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Takvim Kontrolleri -->
+            <div class="calendar-controls">
+                <div class="control-group">
+                    
+                    <!-- Sol Kontroller: Tablar ve Tarih Görüntüleme -->
+                    <div class="control-left">
+                        <!-- Tab Butonları -->
+                        <div class="tab-buttons">
+                            <button class="tab-button active" data-visibility-filter="all">All events</button>
+                            <button class="tab-button" data-visibility-filter="private">Private</button>
+                            <button class="tab-button" data-visibility-filter="public">Public</button>
+                        </div>
+
+                        <!-- Tarih Görüntüleme -->
+                        <div class="date-display">
+                            <span class="date-month-tag" id="date-month-tag">APR</span>
+                            <span class="date-range" id="date-range">1 - 30</span>
+                            <span class="date-year" id="date-year">April 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Sağ Kontroller: Navigasyon ve Yeni Etkinlik -->
+                    <div class="control-right">
+                        <i class="fas fa-redo-alt refresh-icon"></i>
+                        
+                        <!-- Navigasyon Buton Grubu -->
+                        <div class="nav-button-group">
+                            <button class="nav-button" id="prev-period-btn">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="nav-button" id="next-period-btn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="nav-button today-button" id="today-btn">Today</button>
+                            <select class="nav-button view-button" id="view-select">
+                                <option value="month">Month view</option>
+                                <option value="year">Year view</option>
+                            </select>
+                        </div>
+
+                        <!-- Yeni Etkinlik Ekle Butonu -->
+                        <button class="add-event-button" id="add-event-btn">
+                            <i class="fas fa-plus"></i> Add event
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Takvim Izgarası -->
+            <div class="calendar-grid">
+                <!-- Gün Başlıkları -->
+                <div class="day-header">Mon</div>
+                <div class="day-header">Tue</div>
+                <div class="day-header">Wed</div>
+                <div class="day-header">Thu</div>
+                <div class="day-header">Fri</div>
+                <div class="day-header">Sat</div>
+                <div class="day-header">Sun</div>
+
+                <!-- Gün Hücreleri (Hafta 1) -->
+                <div class="calendar-day prev-month">
+                    <div class="day-number">30</div>
+                    <div class="event red">
+                        <span class="event-time">9:00 AM</span> Monday Standup
+                    </div>
+                </div>
+                <div class="calendar-day prev-month">
+                    <div class="day-number">31</div>
+                    <div class="event blue">
+                        <span class="event-time">3:00 PM</span> Coffee w/ Aliya
+                    </div>
+                </div>
+
+                <!-- 1 Ocak - Bu Ay Başlangıcı -->
+                <div class="calendar-day">
+                    <div class="day-number">1</div>
+                    <!-- Boş Gün -->
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">2</div>
+                    <div class="event green">
+                        <span class="event-time">10:00 AM</span> One-on-one w/ UX
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">3</div>
+                    <div class="event teal">
+                        <span class="event-time">1:00 PM</span> Project Demo
+                    </div>
+                    <div class="event yellow">
+                        <span class="event-time">5:00 PM</span> Dinner with C...
+                    </div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">4</div>
+                    <div class="event red">
+                        <span class="event-time">9:00 AM</span> All-hands meet...
+                    </div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">5</div>
+                    <!-- Boş Gün -->
+                </div>
+                
+                <!-- Hafta 2 -->
+                <div class="calendar-day">
+                    <div class="day-number">6</div>
+                    <div class="event blue">
+                        <span class="event-time">11:00 AM</span> Client Review
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">7</div>
+                    <div class="event red">
+                        <span class="event-time">9:00 AM</span> Daily Sync
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">8</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">9</div>
+                    <div class="event green">
+                        <span class="event-time">2:00 PM</span> Q3 Planning
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">10</div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">11</div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">12</div>
+                </div>
+
+                <!-- Hafta 3 -->
+                <div class="calendar-day">
+                    <div class="day-number">13</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">14</div>
+                    <div class="event teal">
+                        <span class="event-time">1:30 PM</span> Design Handoff
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">15</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">16</div>
+                    <div class="event blue">
+                        <span class="event-time">10:00 AM</span> Workshop
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">17</div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">18</div>
+                    <div class="event yellow">
+                        <span class="event-time">All Day</span> Birthday Celebration 
+                    </div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">19</div>
+                </div>
+                
+                <!-- Hafta 4 -->
+                <div class="calendar-day">
+                    <div class="day-number">20</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">21</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">22</div>
+                    <div class="event green">
+                        <span class="event-time">3:00 PM</span> Product Review
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">23</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">24</div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">25</div>
+                </div>
+                <div class="calendar-day weekend">
+                    <div class="day-number">26</div>
+                </div>
+
+                <!-- Hafta 5 -->
+                <div class="calendar-day">
+                    <div class="day-number">27</div>
+                    <div class="event red">
+                        <span class="event-time">9:00 AM</span> Final Review
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">28</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">29</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">30</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">31</div>
+                </div>
+
+                <!-- Hafta 6 (Sonraki Ay) -->
+                <div class="calendar-day next-month weekend">
+                    <div class="day-number">1</div>
+                </div>
+                <div class="calendar-day next-month weekend">
+                    <div class="day-number">2</div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+
+    <footer class="iremind-footer">
+    <div class="footer-main">
+        <span class="footer-brand">iREMIND</span>
+    </div>
+    
+    <div class="social-links">
+        <a href="#" aria-label="iREMIND Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="iREMIND Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="iREMIND Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="iREMIND YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <div class="footer-bottom">
+        <span>© 2025 iREMIND. All rights reserved.</span>
+        <div class="footer-links">
+            <a href="#">Privacy</a>
+            <span class="dot">•</span>
+            <a href="#">Terms</a>
+            <span class="dot">•</span>
+            <a href="#">Support</a>
+        </div>
+    </div>
+</footer>
+
+<div class="event-modal-backdrop" id="event-modal" hidden>
+    <form class="event-modal" id="event-form">
+        <div class="event-modal-header">
+            <span class="modal-label">Calendar Event</span>
+            <h2>Add event</h2>
+        </div>
+
+        <label>
+            Title
+            <input id="event-title-input" type="text" required maxlength="120">
+        </label>
+
+        <label>
+            Note
+            <textarea id="event-note-input" rows="3" maxlength="400"></textarea>
+        </label>
+
+        <div class="event-modal-row">
+            <label>
+                Date
+                <input id="event-date-input" type="date" required>
+            </label>
+            <label>
+                Time
+                <input id="event-time-input" type="time" required>
+            </label>
+        </div>
+
+        <div class="event-modal-row">
+            <label>
+                Color
+                <select id="event-color-input">
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="red">Red</option>
+                    <option value="teal">Teal</option>
+                    <option value="pink">Pink</option>
+                    <option value="purple">Purple</option>
+                </select>
+            </label>
+            <label>
+                Visibility
+                <select id="event-visibility-input">
+                    <option value="PRIVATE">Private</option>
+                    <option value="PUBLIC">Public</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="event-modal-actions">
+            <button type="button" class="modal-secondary" id="cancel-event-btn">Cancel</button>
+            <button type="submit" class="modal-primary">Save event</button>
+        </div>
+        <p class="event-form-error" id="event-form-error" hidden></p>
+    </form>
+</div>
+
+<div class="event-modal-backdrop" id="delete-event-modal" hidden>
+    <div class="event-modal delete-event-modal-card">
+        <div class="event-modal-header">
+            <span class="modal-label">Delete Event</span>
+            <h2 id="delete-event-title">Remove this event?</h2>
+        </div>
+        <p class="delete-event-text">This event will be removed from your calendar.</p>
+        <div class="event-modal-actions">
+            <button type="button" class="modal-secondary" id="cancel-delete-event-btn">Cancel</button>
+            <button type="button" class="modal-danger" id="confirm-delete-event-btn">Delete event</button>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="/src/app-shell.js"></script>
+<script type="module" src="/src/calendar.js"></script>
+</body>
+</html>

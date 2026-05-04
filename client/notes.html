@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Notes - Iremind</title>
+  <link rel="stylesheet" href="/src/study.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <div class="study-shell">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Iremind<span class="logo-dot">.</span></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="calendar.html" class="menu-item"><i class="fas fa-calendar-alt"></i> Calendar</a>
+        <a href="todo.html" class="menu-item"><i class="fas fa-calendar-alt"></i> To-Do List</a>
+        <a href="notes.html" class="menu-item active"><i class="fas fa-sticky-note"></i> Notes</a>
+        <div class="menu-item"><i class="fas fa-bell"></i> Reminder</div>
+        <div class="menu-item"><i class="fas fa-comment-dots"></i> Chats <span class="menu-item-badge">3</span></div>
+      </nav>
+      <div class="quote-card">
+        <div class="quote-card-tag">Today's reminder</div>
+        <p>"Every focused minute moves you forward."</p>
+        <p class="quote-card-author">- Iremind</p>
+      </div>
+      <div class="upgrade-card">
+        <h3>Upgrade your plan</h3>
+        <p>Your trial ends in 12 days. Unlock full potential.</p>
+        <button class="upgrade-card-button">See plans</button>
+      </div>
+      <div class="sidebar-footer">
+        <a href="settings.html" class="menu-item"><i class="fas fa-cog"></i> Settings</a>
+        <a href="index.html" class="menu-item"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <main class="study-main notes-main classic-notes-main">
+      <header class="study-header">
+        <div>
+          <h1>Notes App</h1>
+          <p>Write, organize, and revisit your study notes.</p>
+        </div>
+        <div class="user-profile"><img src="./images/avatar.jpg" alt="User Avatar" /></div>
+      </header>
+
+      <section class="note-editor classic-note-editor">
+        <div class="sticker-strip" aria-hidden="true">
+          <button class="sticker is-active" data-sticker="sparkle">✨</button>
+          <button class="sticker" data-sticker="heart">💗</button>
+          <button class="sticker" data-sticker="star">⭐</button>
+          <button class="sticker" data-sticker="flower">🌸</button>
+          <button class="sticker" data-sticker="bookmark">🔖</button>
+        </div>
+        <span class="editor-kicker">Add a Note</span>
+        <input id="note-title" placeholder="Title" maxlength="100" />
+        <textarea id="note-content" placeholder="Take a note..." rows="7"></textarea>
+        <div class="editor-actions">
+          <input id="note-search" placeholder="Search notes" />
+          <button class="primary-pill" id="save-note-btn">Save note</button>
+        </div>
+      </section>
+
+      <section class="notes-board" id="notes-board"></section>
+    </main>
+  </div>
+
+  <div class="note-modal-backdrop" id="delete-note-modal" hidden>
+    <div class="note-delete-card">
+      <span class="note-sticker">💗</span>
+      <h2 id="delete-note-title">Delete this note?</h2>
+      <p>This note will be removed from your notebook.</p>
+      <div class="note-delete-actions">
+        <button class="ghost-pill" id="cancel-delete-note-btn" type="button">Cancel</button>
+        <button class="danger-pill" id="confirm-delete-note-btn" type="button">Delete note</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/app-shell.js"></script>
+  <script type="module" src="/src/notes.js"></script>
+</body>
+</html>
