@@ -448,10 +448,16 @@ body {
     height: 122px;
     border-radius: 50%;
     object-fit: cover;
+    display: block;
 }
 
 .user-profile {
     cursor: pointer;
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex: 0 0 auto;
 }
 
 /* ======================================================================= */
@@ -1487,6 +1493,10 @@ html[data-theme="dark"] .btn-new-task {
     height: 100%;
     object-fit: cover;
     border-radius: inherit;
+}
+
+.upgrade-card {
+    display: none !important;
 }
 
 @media (max-width: 900px) {

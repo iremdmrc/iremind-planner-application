@@ -212,7 +212,7 @@ SIDEBAR (LEFT MENU) STYLES
 */
 
 .sidebar {
-    box-sizing: content-box;
+    box-sizing: border-box;
     width: 260px;
     flex-shrink: 0;
     display: flex;
@@ -222,7 +222,8 @@ SIDEBAR (LEFT MENU) STYLES
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(15, 23, 42, 0.1);
     background-color: var(--color-sidebar-bg);
-    /* Removed unnecessary/incorrect scroll rules */
+    align-self: stretch;
+    min-height: calc(100vh - 3rem);
 }
 
 .sidebar-logo {
@@ -382,7 +383,7 @@ SIDEBAR (LEFT MENU) STYLES
     width: 100%;
     max-width: none;
     margin-left: 50px;
-    padding: 10px 40px 32px;
+    padding: 0 40px 32px;
     background-color: var(--color-card-bg);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-soft);
@@ -396,11 +397,12 @@ SIDEBAR (LEFT MENU) STYLES
 
 .header {
     display: flex;
-    justify-content: space-between; 
-    align-items: flex-start; 
-    gap: 30px; 
-    margin-bottom: 25px;
-    padding-bottom: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 4px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -428,7 +430,7 @@ SIDEBAR (LEFT MENU) STYLES
     grid-row: 1 / 2;
     font-size: 44px;
     font-weight: 600;
-    margin: 6px 0 12px;
+    margin: 0 0 8px;
     color: var(--color-text-title);
     line-height: 1.1;
 }
@@ -989,17 +991,18 @@ SIDEBAR (LEFT MENU) STYLES
 
 .kanban-dropzone {
     min-height: 520px;
-    display: grid;
-    align-content: start;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 12px;
-    padding: 12px;
+    padding: 16px 12px;
     border-radius: 18px;
     transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .kanban-dropzone > * {
-    width: min(92%, 280px);
+    width: min(96%, 360px);
+    margin: 0 auto;
 }
 
 .kanban-dropzone.is-over {
@@ -1020,12 +1023,16 @@ SIDEBAR (LEFT MENU) STYLES
 .kanban-task-card {
     position: relative;
     display: block;
-    padding: 18px;
+    padding: 18px 20px;
     border: 0;
     border-radius: 13px;
     background: #fff6e8;
     box-shadow: 0 8px 18px rgba(138, 92, 38, 0.07);
     cursor: grab;
+}
+
+.upgrade-card {
+    display: none !important;
 }
 
 .kanban-task-card:nth-child(3n + 2) {
@@ -1144,7 +1151,7 @@ SIDEBAR (LEFT MENU) STYLES
 .kanban-done-toggle input {
     width: 13px;
     height: 13px;
-    accent-color: #2796d5;
+    accent-color: var(--color-primary);
 }
 
 .kanban-task-card .meta-pill {

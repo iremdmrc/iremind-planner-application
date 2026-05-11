@@ -288,7 +288,8 @@ function renderMessages() {
       html += `<div class="chat-day-divider"><span>${escapeHtml(dayLabel)}</span></div>`;
       lastDay = dayLabel;
     }
-    const isMe = message.senderId === me.id;
+    const messageSenderId = message.senderId || message.sender?.id || message.sender?.userId;
+    const isMe = String(messageSenderId) === String(me.id);
     const tick = isMe
       ? `<span class="msg-tick ${message.readAt ? "is-read" : ""}"><i class="fas fa-check-double"></i></span>`
       : "";

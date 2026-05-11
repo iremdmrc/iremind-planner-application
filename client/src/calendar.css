@@ -1386,12 +1386,12 @@ body {
 .date-display {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 0.45rem 0.7rem;
-    border-radius: 14px;
-    background: color-mix(in srgb, var(--color-bg-white) 86%, white);
-    border: 1px solid color-mix(in srgb, var(--color-border-light) 70%, transparent);
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+    gap: 7px;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
 }
 
 .date-month-tag {
@@ -1400,7 +1400,7 @@ body {
     padding: 0;
     border-radius: 0;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 0.9rem;
+    font-size: 0.78rem;
     font-style: italic;
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -1411,7 +1411,7 @@ body {
 
 .date-range {
     margin: 0;
-    font-size: 1.18rem;
+    font-size: 0.96rem;
     font-weight: 650;
     font-style: italic;
     color: var(--color-text-title);
@@ -1419,9 +1419,13 @@ body {
 
 .date-year {
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 0.95rem;
+    font-size: 0.82rem;
     font-style: italic;
     color: color-mix(in srgb, var(--color-text-title) 82%, var(--color-text-muted));
+}
+
+.upgrade-card {
+    display: none !important;
 }
 
 .calendar-grid {
