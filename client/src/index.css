@@ -444,8 +444,8 @@ body {
 }
 
 .user-profile img {
-    width: 136px;
-    height: 136px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
@@ -453,8 +453,8 @@ body {
 
 .user-profile {
     cursor: pointer;
-    width: 136px;
-    height: 136px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     overflow: hidden;
     flex: 0 0 auto;

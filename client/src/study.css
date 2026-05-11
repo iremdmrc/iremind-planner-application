@@ -6214,3 +6214,120 @@ body.chat-dark-mode .study-main.chat-main .chat-room {
 .study-shell + .iremind-footer {
   display: none !important;
 }
+
+/* Discord-like chat-only dark mode */
+body.chat-dark-mode .study-main.chat-main .chat-app {
+  --c-bg: #313338;
+  --c-bg-soft: #2b2d31;
+  --c-bg-deep: #1e1f22;
+  --c-border: rgba(255, 255, 255, 0.08);
+  --c-border-strong: rgba(255, 255, 255, 0.14);
+  --c-text: #f2f3f5;
+  --c-muted: #b5bac1;
+  --c-faint: #80848e;
+  --c-accent: #5865f2;
+  --c-accent-2: #7c86ff;
+  --c-accent-soft: rgba(88, 101, 242, 0.22);
+  --c-bubble: #383a40;
+  --c-bubble-me: #5865f2;
+  background: #313338 !important;
+  color: #f2f3f5 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-friends-panel,
+body.chat-dark-mode .study-main.chat-main .profile-panel {
+  background: #2b2d31 !important;
+  color: #f2f3f5 !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-room {
+  background: #313338 !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .messages-list {
+  background: #313338 !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-side-header,
+body.chat-dark-mode .study-main.chat-main .chat-room-header,
+body.chat-dark-mode .study-main.chat-main .message-form,
+body.chat-dark-mode .study-main.chat-main .chat-friends-section-label {
+  background: #2b2d31 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #f2f3f5 !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-side-header h2,
+body.chat-dark-mode .study-main.chat-main .chat-room-header h1,
+body.chat-dark-mode .study-main.chat-main .profile-name,
+body.chat-dark-mode .study-main.chat-main .profile-section summary,
+body.chat-dark-mode .study-main.chat-main .friend-row strong,
+body.chat-dark-mode .study-main.chat-main .chat-empty-title {
+  color: #f2f3f5 !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-search,
+body.chat-dark-mode .study-main.chat-main .chat-search-filter,
+body.chat-dark-mode .study-main.chat-main .chat-app .chat-id-card,
+body.chat-dark-mode .study-main.chat-main .chat-app .chat-add-friend input,
+body.chat-dark-mode .study-main.chat-main .message-form input,
+body.chat-dark-mode .study-main.chat-main .chat-icon-btn,
+body.chat-dark-mode .study-main.chat-main .profile-quick-btn,
+body.chat-dark-mode .study-main.chat-main .chat-side-action {
+  background: #1e1f22 !important;
+  color: #dbdee1 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-search input,
+body.chat-dark-mode .study-main.chat-main .message-form input {
+  color: #f2f3f5 !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-search input::placeholder,
+body.chat-dark-mode .study-main.chat-main .message-form input::placeholder,
+body.chat-dark-mode .study-main.chat-main .friend-row-preview,
+body.chat-dark-mode .study-main.chat-main .friend-row-time,
+body.chat-dark-mode .study-main.chat-main .message-stamp,
+body.chat-dark-mode .study-main.chat-main .profile-bio,
+body.chat-dark-mode .study-main.chat-main .chat-empty-sub {
+  color: #b5bac1 !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .friend-row:hover {
+  background: #35373c !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .friend-row.is-active {
+  background: #404249 !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .message-bubble {
+  background: #383a40 !important;
+  color: #f2f3f5 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .message-row.is-me .message-bubble,
+body.chat-dark-mode .study-main.chat-main .msg-send-btn,
+body.chat-dark-mode .study-main.chat-main .chat-app .chat-add-friend button {
+  background: #5865f2 !important;
+  color: #fff !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .profile-bio,
+body.chat-dark-mode .study-main.chat-main .status-pill,
+body.chat-dark-mode .study-main.chat-main .chat-day-divider span {
+  background: #1e1f22 !important;
+  color: #dbdee1 !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-profile-banner {
+  background: linear-gradient(135deg, #5865f2 0%, #2b2d31 100%) !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .profile-panel {
+  border-left-color: rgba(255, 255, 255, 0.08) !important;
+}
