@@ -6,8 +6,9 @@
 const API_BASE =
   (typeof import.meta !== "undefined" &&
     import.meta.env &&
-    import.meta.env.VITE_API_BASE) ||
-  "http://localhost:5000/auth";
+    (import.meta.env.VITE_API_BASE ||
+      (import.meta.env.VITE_API_URL && `${import.meta.env.VITE_API_URL}/api/auth`))) ||
+  "http://localhost:5000/api/auth";
 
 // ---- JSON POST helper ----
 async function postJSON(url, body) {
