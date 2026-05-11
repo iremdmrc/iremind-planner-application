@@ -148,7 +148,7 @@ body.focus-page {
   font-size: 1.875rem;
   font-weight: 800;
   letter-spacing: -0.025em;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
   padding-left: 0.25rem;
   color: var(--surface);
 }
@@ -156,8 +156,9 @@ body.focus-page {
 .sidebar-logo span { color: var(--primary); }
 
 .sidebar-nav {
-  display: grid;
-  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-bottom: 2.5rem;
 }
 
@@ -200,37 +201,45 @@ body.focus-page {
   color: white;
 }
 
+/* Quote Card — must match dashboard exactly */
 .quote-card {
   padding: 1rem;
   border-radius: 0.75rem;
   margin-bottom: 1.5rem;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
   background: var(--quote-bg);
   border: 1px solid rgba(241, 184, 85, 0.45);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.10);
 }
 
 .quote-card-tag {
-  display: inline-flex;
-  padding: 0.125rem 0.5rem;
-  border-radius: 999px;
-  background: rgba(138,75,23,0.1);
-  color: var(--primary);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  background-color: rgba(138, 75, 23, 0.1);
+  color: var(--primary);
 }
 
 .quote-card p {
-  margin: 0.5rem 0 0;
-  color: var(--muted);
   font-size: 0.875rem;
   font-style: italic;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  color: var(--muted);
 }
 
 .quote-card-author {
-  color: var(--primary) !important;
   font-size: 0.75rem !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
+  margin-top: 0.25rem !important;
+  color: var(--primary) !important;
 }
 
 .upgrade-card {
@@ -267,10 +276,11 @@ body.focus-page {
 }
 
 .sidebar-footer {
-  display: grid;
-  gap: 0.25rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(15,23,42,0.1);
+  border-top: 1px solid rgba(15, 23, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   margin-top: auto;
 }
 
@@ -283,7 +293,7 @@ body.focus-page {
   min-width: 0;
   margin-left: 50px;
   border-radius: 24px;
-  padding: 20px 40px;
+  padding: 0 40px 32px;
   background: linear-gradient(180deg, var(--surface-strong) 0%, var(--surface) 100%);
   border: 1px solid var(--border);
   box-shadow: 0 12px 30px rgba(90, 54, 18, 0.12);
@@ -295,7 +305,8 @@ body.focus-page {
   align-items: flex-start;
   justify-content: space-between;
   gap: 18px;
-  margin-bottom: 20px;
+  margin-top: 4px;
+  margin-bottom: 18px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--border);
 }
@@ -309,7 +320,7 @@ body.focus-page {
 
 .study-header h1,
 .study-header .page-title {
-  margin: 30px 0 20px;
+  margin: 0 0 8px;
   font-size: 44px;
   font-weight: 600;
   line-height: 1.1;
@@ -4699,18 +4710,18 @@ html[data-theme="dark"] .iremind-footer .footer-links a {
 
 /* Reminder page top spacing — bring title up */
 .reminder-main {
-  padding-top: 0;
+  padding-top: 18px;
 }
 
 .reminder-main .study-header {
-  margin-top: 0;
-  padding-top: 0;
+  margin-top: 34px;
+  padding-top: 0.5rem;
 }
 
 .reminder-main .study-header h1,
 .reminder-main .study-header .page-title {
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin-top: 18px;
+  margin-bottom: 10px;
 }
 
 /* ===========================================================
@@ -5695,6 +5706,72 @@ html[data-theme="dark"] .chat-day-divider span {
   color: #d8d2f0;
 }
 
+/* Theme-aware chat polish */
+.chat-app {
+  --c-bg: color-mix(in srgb, var(--surface) 78%, var(--bg) 22%);
+  --c-bg-soft: color-mix(in srgb, var(--surface-strong) 84%, var(--bg) 16%);
+  --c-bg-deep: color-mix(in srgb, var(--surface-strong) 94%, white 6%);
+  --c-border: color-mix(in srgb, var(--border) 70%, transparent);
+  --c-border-strong: color-mix(in srgb, var(--primary) 18%, var(--border) 82%);
+  --c-text: var(--text);
+  --c-muted: color-mix(in srgb, var(--muted) 86%, var(--text) 14%);
+  --c-faint: color-mix(in srgb, var(--muted) 62%, var(--surface) 38%);
+  --c-accent: var(--primary);
+  --c-accent-2: var(--accent);
+  --c-accent-soft: color-mix(in srgb, var(--accent) 18%, transparent);
+  --c-bubble: color-mix(in srgb, var(--surface-strong) 92%, white 8%);
+  --c-bubble-me: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  box-shadow: 0 24px 58px -26px color-mix(in srgb, var(--primary) 34%, transparent);
+}
+
+.messages-list {
+  background:
+    radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--accent) 24%, transparent) 0%, transparent 36%),
+    radial-gradient(circle at 88% 28%, color-mix(in srgb, var(--primary) 16%, transparent) 0%, transparent 38%),
+    radial-gradient(circle at 30% 78%, color-mix(in srgb, var(--bg) 70%, transparent) 0%, transparent 42%),
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 86%, var(--bg) 14%) 0%, color-mix(in srgb, var(--surface) 72%, var(--bg) 28%) 100%);
+}
+
+.chat-side-header,
+.chat-friends-panel,
+.chat-room-header,
+.message-form,
+.profile-panel,
+.chat-friends,
+.chat-friends-section-label {
+  background: var(--c-bg-soft);
+}
+
+.friend-row.is-active {
+  background: color-mix(in srgb, var(--accent) 16%, var(--c-bg-deep) 84%);
+}
+
+.message-row.is-me .message-bubble,
+.msg-send-btn,
+.chat-app .chat-add-friend button {
+  background: var(--c-bubble-me);
+}
+
+html[data-theme="dark"] .chat-app {
+  --c-bg: #0f172a;
+  --c-bg-soft: #111827;
+  --c-bg-deep: #172033;
+  --c-border: rgba(255,255,255,0.12);
+  --c-border-strong: rgba(255,255,255,0.18);
+  --c-text: #f8fafc;
+  --c-muted: #cbd5e1;
+  --c-faint: #94a3b8;
+  --c-bubble: #172033;
+  --c-bubble-me: linear-gradient(135deg, #6d5dd3 0%, #8fc7ff 100%);
+}
+
+html[data-theme="dark"] .messages-list {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(109, 93, 211, 0.22) 0%, transparent 38%),
+    radial-gradient(circle at 82% 30%, rgba(143, 199, 255, 0.16) 0%, transparent 40%),
+    linear-gradient(180deg, #0f172a 0%, #111827 100%);
+}
+
 /* ===========================================================
    Responsive: hide profile column on smaller screens
    =========================================================== */
@@ -5772,26 +5849,87 @@ body:not(.focus-page) .study-shell .study-main {
   display: none;
 }
 
-.reminder-main .study-header,
-.notes-main.classic-notes-main .study-header {
-  margin-top: 12px;
-  padding-top: 0.8rem;
+/* ===========================================================
+   IREMIND FOOTER — mirror of the dashboard footer
+   =========================================================== */
+.iremind-footer {
+  background-color: color-mix(in srgb, var(--surface-strong) 80%, var(--bg) 20%);
+  border-top: 1px solid #D4C7A3;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
 }
 
-.reminder-main .study-header h1,
-.reminder-main .study-header .page-title,
-.notes-main.classic-notes-main .study-header h1,
-.notes-main.classic-notes-main .study-header .page-title {
-  margin-top: 18px;
-  margin-bottom: 14px;
+.iremind-footer .footer-brand {
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: #A36B3D;
+  text-transform: uppercase;
 }
 
-.reminder-main .study-header {
-  margin-top: 54px;
-  padding-top: 1.35rem;
+.iremind-footer .social-links {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 5px;
 }
 
-.reminder-main .study-header h1,
-.reminder-main .study-header .page-title {
-  margin-top: 34px;
+.iremind-footer .social-links a {
+  color: #CC8D30;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.iremind-footer .social-links a:hover {
+  color: #A36B3D;
+}
+
+.iremind-footer .footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #B5A475;
+  font-weight: 400;
+}
+
+.iremind-footer .footer-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.iremind-footer .footer-links a {
+  color: #B5A475;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.iremind-footer .footer-links a:hover {
+  color: #CC8D30;
+}
+
+.iremind-footer .dot {
+  color: #E0E0E0;
+  font-weight: normal;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 720px) {
+  .iremind-footer {
+    padding: 28px 18px;
+  }
+  .iremind-footer .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
 }
