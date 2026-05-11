@@ -6331,3 +6331,104 @@ body.chat-dark-mode .study-main.chat-main .chat-profile-banner {
 body.chat-dark-mode .study-main.chat-main .profile-panel {
   border-left-color: rgba(255, 255, 255, 0.08) !important;
 }
+
+/* Theme-matched chat dark palettes */
+html[data-theme="rose"] body.chat-dark-mode .study-main.chat-main .chat-app {
+  --c-bg: #3a1724;
+  --c-bg-soft: #2a111b;
+  --c-bg-deep: #211018;
+  --c-accent: #f08aa8;
+  --c-accent-2: #c76f8a;
+  --c-bubble: #4a2230;
+  --c-bubble-me: linear-gradient(135deg, #b94f73 0%, #e184a0 100%);
+}
+
+html[data-theme="sage"] body.chat-dark-mode .study-main.chat-main .chat-app {
+  --c-bg: #172717;
+  --c-bg-soft: #101d11;
+  --c-bg-deep: #0d170e;
+  --c-accent: #9fbd73;
+  --c-accent-2: #6f9850;
+  --c-bubble: #233423;
+  --c-bubble-me: linear-gradient(135deg, #4f7f3b 0%, #9fbd73 100%);
+}
+
+html[data-theme="lavender"] body.chat-dark-mode .study-main.chat-main .chat-app {
+  --c-bg: #211934;
+  --c-bg-soft: #171125;
+  --c-bg-deep: #120d1e;
+  --c-accent: #b99be8;
+  --c-accent-2: #8f70d0;
+  --c-bubble: #2c2343;
+  --c-bubble-me: linear-gradient(135deg, #7457bd 0%, #b99be8 100%);
+}
+
+html[data-theme="sky"] body.chat-dark-mode .study-main.chat-main .chat-app {
+  --c-bg: #102436;
+  --c-bg-soft: #0c1a27;
+  --c-bg-deep: #08131d;
+  --c-accent: #8fc0e8;
+  --c-accent-2: #4f91c7;
+  --c-bubble: #193047;
+  --c-bubble-me: linear-gradient(135deg, #32658f 0%, #8fc0e8 100%);
+}
+
+html[data-theme="peach"] body.chat-dark-mode .study-main.chat-main .chat-app {
+  --c-bg: #3a2118;
+  --c-bg-soft: #2a1812;
+  --c-bg-deep: #20120d;
+  --c-accent: #eba989;
+  --c-accent-2: #c97755;
+  --c-bubble: #472a1f;
+  --c-bubble-me: linear-gradient(135deg, #96543e 0%, #eba989 100%);
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-friends-panel,
+body.chat-dark-mode .study-main.chat-main .profile-panel,
+body.chat-dark-mode .study-main.chat-main .chat-side-header,
+body.chat-dark-mode .study-main.chat-main .chat-room-header,
+body.chat-dark-mode .study-main.chat-main .message-form,
+body.chat-dark-mode .study-main.chat-main .chat-friends-section-label {
+  background: var(--c-bg-soft) !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-room,
+body.chat-dark-mode .study-main.chat-main .messages-list {
+  background: var(--c-bg) !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-search,
+body.chat-dark-mode .study-main.chat-main .chat-search-filter,
+body.chat-dark-mode .study-main.chat-main .chat-app .chat-id-card,
+body.chat-dark-mode .study-main.chat-main .chat-app .chat-add-friend input,
+body.chat-dark-mode .study-main.chat-main .message-form input,
+body.chat-dark-mode .study-main.chat-main .chat-icon-btn,
+body.chat-dark-mode .study-main.chat-main .profile-quick-btn,
+body.chat-dark-mode .study-main.chat-main .chat-side-action,
+body.chat-dark-mode .study-main.chat-main .profile-bio,
+body.chat-dark-mode .study-main.chat-main .status-pill,
+body.chat-dark-mode .study-main.chat-main .chat-day-divider span {
+  background: var(--c-bg-deep) !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .friend-row:hover {
+  background: color-mix(in srgb, var(--c-bg) 72%, var(--c-accent) 28%) !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .friend-row.is-active {
+  background: color-mix(in srgb, var(--c-bg) 58%, var(--c-accent) 42%) !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .message-bubble {
+  background: var(--c-bubble) !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .message-row.is-me .message-bubble,
+body.chat-dark-mode .study-main.chat-main .msg-send-btn,
+body.chat-dark-mode .study-main.chat-main .chat-app .chat-add-friend button {
+  background: var(--c-bubble-me) !important;
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-profile-banner {
+  background: linear-gradient(135deg, var(--c-accent) 0%, var(--c-bg-soft) 100%) !important;
+}

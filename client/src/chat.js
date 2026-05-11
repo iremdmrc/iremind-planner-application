@@ -351,7 +351,10 @@ function renderMessages() {
       lastDay = dayLabel;
     }
     const messageSenderId = message.senderId || message.sender?.id || message.sender?.userId;
-    const isMe = String(messageSenderId) === String(me.id);
+    const messageReceiverId = message.receiverId || message.receiver?.id || message.receiver?.userId;
+    const isMe =
+      String(messageSenderId) === String(me.id) ||
+      (activeFriend && String(messageReceiverId) === String(activeFriend.id));
     const tick = isMe
       ? `<span class="msg-tick ${message.readAt ? "is-read" : ""}"><i class="fas fa-check-double"></i></span>`
       : "";
