@@ -1,5 +1,5 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
-const FALLBACK_AVATAR = "./images/avatar.jpg";
+const FALLBACK_AVATAR = "";
 
 const STATUS_LABELS = {
   ONLINE: "Online",
@@ -63,7 +63,21 @@ function applyPreview() {
   const bannerClearBtn = document.querySelector("#banner-clear-btn");
 
   const avatarUrl = pendingAvatar ?? currentUser?.avatarUrl ?? FALLBACK_AVATAR;
-  if (avatarPreview) avatarPreview.src = avatarUrl;
+  if (avatarPreview) {
+    const avatarButton = avatarPreview.closest(".profile-card-avatar");
+    if (avatarUrl) {
+      avatarPreview.src = avatarUrl;
+      avatarPreview.hidden = false;
+      avatarButton?.classList.remove("is-empty-avatar");
+    } else {
+      avatarPreview.removeAttribute("src");
+      avatarPreview.hidden = true;
+      avatarButton?.classList.add("is-empty-avatar");
+      if (avatarButton) {
+        avatarButton.dataset.initial = (currentUser?.displayName || currentUser?.email || "U").trim().charAt(0).toUpperCase() || "U";
+      }
+    }
+  }
 
   const bannerUrl = pendingBanner !== undefined ? pendingBanner : currentUser?.bannerUrl;
   if (bannerPreview) {

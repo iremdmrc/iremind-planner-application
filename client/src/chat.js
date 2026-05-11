@@ -1,5 +1,5 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
-const FALLBACK_AVATAR = "./images/avatar.jpg";
+const FALLBACK_AVATAR = "";
 
 const STATUS_LABELS = {
   ONLINE: "Online",
@@ -49,6 +49,13 @@ function statusLabel(status) {
   return STATUS_LABELS[status] || "Online";
 }
 
+function avatarMarkup(user, className = "") {
+  const name = user?.displayName || user?.email || "User";
+  const initial = name.trim().charAt(0).toUpperCase() || "U";
+  if (user?.avatarUrl) return `<img class="${className}" src="${escapeHtml(user.avatarUrl)}" alt="" />`;
+  return `<span class="${className} empty-avatar" aria-hidden="true">${escapeHtml(initial)}</span>`;
+}
+
 function timeFormat(date) {
   return new Date(date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
@@ -88,7 +95,7 @@ function renderFriends() {
     return `
       <button class="friend-row status-${escapeHtml(friend.status || "ONLINE")} ${activeFriend?.id === friend.id ? "is-active" : ""}" data-friend-id="${escapeHtml(friend.id)}" type="button">
         <span class="friend-row-avatar">
-          <img src="${friend.avatarUrl || FALLBACK_AVATAR}" alt="" />
+          ${avatarMarkup(friend)}
           <span class="friend-row-status-dot"></span>
         </span>
         <span class="friend-row-body">
@@ -144,7 +151,7 @@ function renderProfile() {
     <div class="profile-hero">
       <div class="chat-profile-banner ${bannerClass}" ${bannerStyle}></div>
       <div class="profile-avatar-stack">
-        <img class="chat-profile-avatar" src="${activeFriend.avatarUrl || FALLBACK_AVATAR}" alt="" />
+        ${avatarMarkup(activeFriend, "chat-profile-avatar")}
         <span class="profile-avatar-status status-${escapeHtml(status)}">
           <i class="fas ${statusIcon(status)}"></i>
         </span>
@@ -224,7 +231,7 @@ function renderHeader() {
   header.innerHTML = `
     <div class="chat-room-header-left">
       <div class="chat-room-avatar-wrap">
-        <img src="${activeFriend.avatarUrl || FALLBACK_AVATAR}" alt="" />
+        ${avatarMarkup(activeFriend)}
         <span class="friend-row-status-dot ${`status-${escapeHtml(status)}`}"></span>
       </div>
       <div>
@@ -286,7 +293,7 @@ function renderMessages() {
       ? `<span class="msg-tick ${message.readAt ? "is-read" : ""}"><i class="fas fa-check-double"></i></span>`
       : "";
     const avatar = !isMe
-      ? `<img class="message-avatar" src="${activeFriend.avatarUrl || FALLBACK_AVATAR}" alt="" />`
+      ? avatarMarkup(activeFriend, "message-avatar")
       : "";
     html += `
       <div class="message-row ${isMe ? "is-me" : ""}">

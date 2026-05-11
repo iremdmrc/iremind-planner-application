@@ -30,6 +30,61 @@
     --quote-bg: linear-gradient(135deg, #F9E3B0 0%, #F1B855 40%, #FFF9EC 100%);
 }
 
+/* Final page polish: empty avatar, balanced title, warm right panel */
+.main {
+    background: linear-gradient(180deg, var(--color-card-bg) 0%, color-mix(in srgb, var(--color-card-bg) 86%, var(--color-bg-light)) 100%);
+}
+
+.main .header {
+    margin-top: 12px;
+    padding-top: 0.8rem;
+}
+
+.main .page-title {
+    margin-top: 18px;
+    margin-bottom: 14px;
+}
+
+.user-profile.is-empty-avatar,
+.empty-avatar {
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 40%),
+        color-mix(in srgb, var(--color-card-bg) 72%, white);
+    color: var(--color-primary);
+    font-weight: 800;
+}
+
+.user-profile.is-empty-avatar::before {
+    content: attr(data-initial);
+    font-size: 1.55rem;
+}
+
+.user-profile.is-empty-avatar img {
+    display: none;
+}
+
+.user-profile.is-empty-avatar,
+.empty-avatar {
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 40%),
+        color-mix(in srgb, var(--color-card-bg) 72%, white);
+    color: var(--color-primary);
+    font-weight: 800;
+}
+
+.user-profile.is-empty-avatar::before {
+    content: attr(data-initial);
+    font-size: 1.55rem;
+}
+
+.user-profile.is-empty-avatar img {
+    display: none;
+}
+
 html[data-theme="rose"] {
     --color-primary: #8b3a55;
     --color-primary-soft: #d88aa0;
@@ -1585,4 +1640,19 @@ FOOTER STYLES
     .side-card {
         padding: 16px;
     }
+}
+
+/* Final page polish: keep these after responsive rules */
+.main {
+    background: linear-gradient(180deg, var(--color-card-bg) 0%, color-mix(in srgb, var(--color-card-bg) 86%, var(--color-bg-light)) 100%);
+}
+
+.main .header {
+    margin-top: 12px;
+    padding-top: 0.8rem;
+}
+
+.main .page-title {
+    margin-top: 18px;
+    margin-bottom: 14px;
 }

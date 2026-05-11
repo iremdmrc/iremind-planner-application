@@ -1,5 +1,5 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
-const FALLBACK_AVATAR = "./images/avatar.jpg";
+const FALLBACK_AVATAR = "";
 
 function applySavedTheme() {
   const authTheme = localStorage.getItem("iremindAuthTheme");
@@ -61,7 +61,19 @@ function updateUserUi(user) {
   const avatarSize = Math.max(48, Math.min(Number(user?.avatarSize) || 72, 120));
 
   document.querySelectorAll(".user-profile img, .profile-avatar-img").forEach((img) => {
-    img.src = avatar;
+    const wrapper = img.closest(".user-profile") || img.parentElement;
+    if (avatar) {
+      img.src = avatar;
+      img.hidden = false;
+      wrapper?.classList.remove("is-empty-avatar");
+    } else {
+      img.removeAttribute("src");
+      img.hidden = true;
+      wrapper?.classList.add("is-empty-avatar");
+      if (wrapper && !wrapper.dataset.initial) {
+        wrapper.dataset.initial = firstName(user).charAt(0).toUpperCase() || "U";
+      }
+    }
     img.alt = `${firstName(user)} profile photo`;
     if (img.closest(".user-profile") || img.classList.contains("profile-avatar-img")) {
       img.style.width = `${avatarSize}px`;

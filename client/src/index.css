@@ -1459,6 +1459,25 @@ html[data-theme="dark"] .btn-new-task {
 .main-content {
     margin-left: 0;
     min-width: 0;
+    background: linear-gradient(180deg, var(--color-card-bg) 0%, color-mix(in srgb, var(--color-card-bg) 84%, var(--color-bg-light)) 100%);
+}
+
+.user-profile.is-empty-avatar,
+.profile-card-avatar.is-empty-avatar,
+.empty-avatar {
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 40%),
+        color-mix(in srgb, var(--color-card-bg) 72%, white);
+    color: var(--color-primary);
+    font-weight: 800;
+}
+
+.user-profile.is-empty-avatar::before,
+.profile-card-avatar.is-empty-avatar::before {
+    content: attr(data-initial);
+    font-size: 1.55rem;
 }
 
 @media (max-width: 900px) {

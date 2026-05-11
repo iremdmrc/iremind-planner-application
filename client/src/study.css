@@ -5707,3 +5707,71 @@ html[data-theme="dark"] .chat-day-divider span {
   .chat-app { grid-template-columns: 1fr; }
   .chat-friends-panel { display: none; }
 }
+
+/* Final page polish: empty avatars and warm panels */
+body:not(.focus-page) .study-shell .study-main {
+  background: linear-gradient(180deg, var(--surface-strong) 0%, var(--surface) 100%);
+}
+
+.user-profile.is-empty-avatar,
+.profile-card-avatar.is-empty-avatar,
+.empty-avatar {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--primary) 18%, transparent), transparent 40%),
+    color-mix(in srgb, var(--surface) 78%, white);
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.user-profile.is-empty-avatar::before,
+.profile-card-avatar.is-empty-avatar::before {
+  content: attr(data-initial);
+  font-size: 1.55rem;
+}
+
+.empty-avatar {
+  border-radius: 50%;
+}
+
+.friend-row-avatar .empty-avatar,
+.chat-room-avatar-wrap .empty-avatar,
+.message-avatar.empty-avatar,
+.chat-profile-avatar.empty-avatar {
+  width: 100%;
+  height: 100%;
+  font-size: 0.9rem;
+}
+
+.message-avatar.empty-avatar {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+}
+
+.chat-profile-avatar.empty-avatar {
+  width: 84px;
+  height: 84px;
+  margin: 0;
+  border: 6px solid #fff;
+}
+
+.profile-card-avatar.is-empty-avatar img,
+.user-profile.is-empty-avatar img {
+  display: none;
+}
+
+.reminder-main .study-header,
+.notes-main.classic-notes-main .study-header {
+  margin-top: 12px;
+  padding-top: 0.8rem;
+}
+
+.reminder-main .study-header h1,
+.reminder-main .study-header .page-title,
+.notes-main.classic-notes-main .study-header h1,
+.notes-main.classic-notes-main .study-header .page-title {
+  margin-top: 18px;
+  margin-bottom: 14px;
+}
