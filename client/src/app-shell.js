@@ -76,8 +76,12 @@ function updateUserUi(user) {
     }
     img.alt = `${firstName(user)} profile photo`;
     if (img.closest(".user-profile") || img.classList.contains("profile-avatar-img")) {
-      img.style.width = `${avatarSize}px`;
-      img.style.height = `${avatarSize}px`;
+      img.style.width = "100%";
+      img.style.height = "100%";
+      if (wrapper?.classList.contains("user-profile") || wrapper?.classList.contains("profile-avatar-img")) {
+        wrapper.style.width = `${avatarSize}px`;
+        wrapper.style.height = `${avatarSize}px`;
+      }
     }
   });
 
