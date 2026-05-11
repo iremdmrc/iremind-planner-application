@@ -11,9 +11,32 @@ const themes = {
   },
 };
 
+const BACKGROUND_VIDEO_VOLUME = 8;
+
 function videoUrl(themeName) {
   const theme = themes[themeName] || themes.pink;
-  return `https://www.youtube.com/embed/${theme.id}?autoplay=1&mute=0&controls=0&loop=1&playlist=${theme.id}&start=${theme.start}&playsinline=1&rel=0&modestbranding=1`;
+  return `https://www.youtube.com/embed/${theme.id}?autoplay=1&mute=0&controls=0&loop=1&playlist=${theme.id}&start=${theme.start}&playsinline=1&rel=0&modestbranding=1&enablejsapi=1`;
+}
+
+function sendVideoCommand(frame, func, args = []) {
+  if (!frame?.contentWindow) return;
+  frame.contentWindow.postMessage(
+    JSON.stringify({
+      event: "command",
+      func,
+      args,
+    }),
+    "*"
+  );
+}
+
+function softenBackgroundVideo(frame) {
+  [300, 900, 1600].forEach((delay) => {
+    setTimeout(() => {
+      sendVideoCommand(frame, "unMute");
+      sendVideoCommand(frame, "setVolume", [BACKGROUND_VIDEO_VOLUME]);
+    }, delay);
+  });
 }
 
 function formatMinutes(minutes) {
@@ -31,6 +54,7 @@ function dayKey(date) {
 function applyTheme(themeName) {
   localStorage.setItem("iremindFocusTheme", themeName);
   document.querySelectorAll(".focus-video-bg").forEach((frame) => {
+    frame.addEventListener("load", () => softenBackgroundVideo(frame), { once: true });
     frame.src = videoUrl(themeName);
   });
   document.querySelectorAll("[data-focus-theme]").forEach((button) => {

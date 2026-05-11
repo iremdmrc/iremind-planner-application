@@ -317,6 +317,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    margin-top: auto;
 }
 
 .sidebar-footer .menu-item {
@@ -1431,4 +1432,44 @@ html[data-theme="dark"] .btn-new-task {
   .day-label {
       font-size: 10px;
   }
+}
+
+/* Unified app frame: every main page uses the same sidebar, panel width and gap */
+:root {
+    --app-frame-padding: 1.5rem;
+    --app-sidebar-width: 300px;
+    --app-panel-gap: 1.5rem;
+}
+
+.app-container {
+    grid-template-columns: var(--app-sidebar-width) minmax(0, 1fr);
+    gap: var(--app-panel-gap);
+    width: calc(100% - 40px);
+    padding: var(--app-frame-padding);
+    align-items: stretch;
+}
+
+.sidebar {
+    box-sizing: border-box;
+    width: var(--app-sidebar-width);
+    padding: 1.25rem;
+    align-self: stretch;
+}
+
+.main-content {
+    margin-left: 0;
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+    .app-container {
+        grid-template-columns: 1fr;
+        width: 100%;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
 }

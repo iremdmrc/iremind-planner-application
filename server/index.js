@@ -7,6 +7,7 @@ import { PrismaClient } from "@prisma/client";
 
 const app = express();
 const prisma = new PrismaClient();
+const chatClients = new Map();
 
 // ---- Config
 const JWT_SECRET = process.env.JWT_SECRET || "change-this";
@@ -37,15 +38,56 @@ function signTokens(user) {
   return { accessToken, refreshToken };
 }
 
+// Detect once at startup whether the running Prisma client knows about
+// the bannerUrl column — true only after the migration has been applied.
+let SUPPORTS_BANNER = false;
+(async () => {
+  try {
+    await prisma.user.findFirst({ select: { id: true, bannerUrl: true } });
+    SUPPORTS_BANNER = true;
+    console.log("[iremind] banner support: ON");
+  } catch {
+    SUPPORTS_BANNER = false;
+    console.warn(
+      "[iremind] bannerUrl column not present yet. Run `npx prisma migrate dev --name add_banner_url` (in the server folder) to enable the banner feature."
+    );
+  }
+})();
+
 function pickUserSafe(u) {
   return {
     id: u.id,
     email: u.email,
     displayName: u.displayName,
     avatarUrl: u.avatarUrl,
+    bannerUrl: SUPPORTS_BANNER ? (u.bannerUrl ?? null) : null,
+    about: u.about,
+    status: u.status,
+    avatarSize: u.avatarSize,
   };
 }
 
+// Returns a fresh plain select object each time — always safe for Prisma.
+function userPublicSelect() {
+  const base = {
+    id: true,
+    email: true,
+    displayName: true,
+    avatarUrl: true,
+    about: true,
+    status: true,
+    avatarSize: true,
+  };
+  if (SUPPORTS_BANNER) base.bannerUrl = true;
+  return base;
+}
+
+function pushChatEvent(userId, payload) {
+  const clients = chatClients.get(userId);
+  if (!clients) return;
+  const message = `data: ${JSON.stringify(payload)}\n\n`;
+  clients.forEach((client) => client.write(message));
+}
 
 // ---- Auth middleware
 async function auth(req, res, next) {
@@ -59,7 +101,7 @@ async function auth(req, res, next) {
 
     const user = await prisma.user.findUnique({
       where: { id: userId },
-      select: { id: true, email: true, displayName: true, avatarUrl: true },
+      select: userPublicSelect(),
     });
     if (!user) return res.status(401).json({ success: false, error: "user not found" });
 
@@ -100,7 +142,7 @@ api.post("/auth/register", async (req, res) => {
 
     const user = await prisma.user.create({
       data: { email, passwordHash, displayName },
-      select: { id: true, email: true, displayName: true, avatarUrl: true, },
+      select: userPublicSelect(),
     });
 
     const tokens = signTokens(user);
@@ -143,12 +185,7 @@ api.post("/auth/refresh", async (req, res) => {
 
     const user = await prisma.user.findUnique({
       where: { id: payload.sub },
-      select: {
-        id: true,
-        email: true,
-        displayName: true,
-        avatarUrl: true,
-      },
+      select: userPublicSelect(),
     });
 
     if (!user) return res.status(401).json({ success: false, error: "user not found" });
@@ -167,7 +204,7 @@ api.get("/me", auth, async (req, res) => {
 
 api.patch("/me/profile", auth, async (req, res) => {
   try {
-    const { displayName, avatarUrl, email } = req.body;
+    const { displayName, avatarUrl, bannerUrl, email, about, status, avatarSize } = req.body;
 
     if (email) {
       const existing = await prisma.user.findUnique({ where: { email } });
@@ -181,14 +218,13 @@ api.patch("/me/profile", auth, async (req, res) => {
       data: {
         ...(displayName !== undefined ? { displayName } : {}),
         ...(avatarUrl !== undefined ? { avatarUrl } : {}),
+        ...(bannerUrl !== undefined && SUPPORTS_BANNER ? { bannerUrl } : {}),
         ...(email !== undefined ? { email } : {}),
+        ...(about !== undefined ? { about } : {}),
+        ...(status !== undefined ? { status } : {}),
+        ...(avatarSize !== undefined ? { avatarSize: Number(avatarSize) || 72 } : {}),
       },
-      select: {
-        id: true,
-        email: true,
-        displayName: true,
-        avatarUrl: true,
-      },
+      select: userPublicSelect(),
     });
 
     res.json({ success: true, user });
@@ -780,6 +816,272 @@ api.delete("/mind-map/:id", auth, async (req, res) => {
   } catch (e) {
     console.error("DELETE MIND MAP ERR:", e);
     res.status(500).json({ success: false, error: "server error" });
+  }
+});
+
+api.get("/reminders", auth, async (req, res) => {
+  try {
+    const now = new Date();
+    const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+
+    const [events, tasks, completions] = await Promise.all([
+      prisma.event.findMany({
+        where: {
+          userId: req.user.id,
+          startsAt: { gte: now, lte: tomorrow },
+        },
+        orderBy: { startsAt: "asc" },
+      }),
+      prisma.task.findMany({
+        where: {
+          userId: req.user.id,
+          status: { not: "DONE" },
+          dueDate: { gte: now, lte: tomorrow },
+        },
+        orderBy: { dueDate: "asc" },
+      }),
+      prisma.reminderCompletion.findMany({
+        where: { userId: req.user.id },
+      }),
+    ]);
+
+    const done = new Set(completions.map((item) => `${item.sourceType}:${item.sourceId}`));
+    const reminders = [
+      ...events.map((event) => ({
+        id: `EVENT:${event.id}`,
+        sourceType: "EVENT",
+        sourceId: event.id,
+        title: event.title,
+        note: event.note,
+        dueAt: event.startsAt,
+        kind: "Calendar event",
+        completed: done.has(`EVENT:${event.id}`),
+      })),
+      ...tasks.map((task) => ({
+        id: `TASK:${task.id}`,
+        sourceType: "TASK",
+        sourceId: task.id,
+        title: task.title,
+        note: task.note,
+        dueAt: task.dueDate,
+        kind: "To-do task",
+        completed: done.has(`TASK:${task.id}`),
+      })),
+    ].sort((a, b) => new Date(a.dueAt) - new Date(b.dueAt));
+
+    res.json({ success: true, reminders });
+  } catch (e) {
+    console.error("GET REMINDERS ERR:", e);
+    res.status(500).json({ success: false, error: "server error" });
+  }
+});
+
+api.post("/reminders/complete", auth, async (req, res) => {
+  try {
+    const { sourceType, sourceId } = req.body;
+    if (!sourceType || !sourceId) return res.status(400).json({ success: false, error: "missing fields" });
+
+    await prisma.reminderCompletion.upsert({
+      where: {
+        sourceType_sourceId_userId: {
+          sourceType,
+          sourceId,
+          userId: req.user.id,
+        },
+      },
+      update: { completedAt: new Date() },
+      create: { sourceType, sourceId, userId: req.user.id },
+    });
+
+    res.json({ success: true });
+  } catch (e) {
+    console.error("COMPLETE REMINDER ERR:", e);
+    res.status(500).json({ success: false, error: "server error" });
+  }
+});
+
+api.get("/chat/me", auth, async (req, res) => {
+  res.json({ success: true, user: req.user });
+});
+
+api.get("/chat/user/:id", auth, async (req, res) => {
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: req.params.id },
+      select: userPublicSelect(),
+    });
+    if (!user) return res.status(404).json({ success: false, error: "user not found" });
+    res.json({ success: true, user });
+  } catch (e) {
+    console.error("GET CHAT USER ERR:", e);
+    res.status(500).json({ success: false, error: "server error" });
+  }
+});
+
+api.get("/chat/friends", auth, async (req, res) => {
+  try {
+    const rows = await prisma.friendship.findMany({
+      where: {
+        OR: [{ requesterId: req.user.id }, { receiverId: req.user.id }],
+      },
+      include: {
+        requester: { select: userPublicSelect() },
+        receiver: { select: userPublicSelect() },
+      },
+      orderBy: { createdAt: "desc" },
+    });
+
+    const friends = rows.map((row) => row.requesterId === req.user.id ? row.receiver : row.requester);
+    res.json({ success: true, friends });
+  } catch (e) {
+    console.error("GET FRIENDS ERR:", e);
+    res.status(500).json({ success: false, error: "server error" });
+  }
+});
+
+api.post("/chat/friends", auth, async (req, res) => {
+  try {
+    const { friendId } = req.body;
+    if (!friendId || friendId === req.user.id) {
+      return res.status(400).json({ success: false, error: "invalid friend id" });
+    }
+
+    const friend = await prisma.user.findUnique({ where: { id: friendId }, select: userPublicSelect() });
+    if (!friend) return res.status(404).json({ success: false, error: "user not found" });
+
+    const exists = await prisma.friendship.findFirst({
+      where: {
+        OR: [
+          { requesterId: req.user.id, receiverId: friendId },
+          { requesterId: friendId, receiverId: req.user.id },
+        ],
+      },
+    });
+
+    if (!exists) {
+      await prisma.friendship.create({
+        data: { requesterId: req.user.id, receiverId: friendId },
+      });
+    }
+
+    res.status(201).json({ success: true, friend });
+  } catch (e) {
+    console.error("ADD FRIEND ERR:", e);
+    res.status(500).json({ success: false, error: "server error" });
+  }
+});
+
+api.delete("/chat/friends/:id", auth, async (req, res) => {
+  try {
+    await prisma.friendship.deleteMany({
+      where: {
+        OR: [
+          { requesterId: req.user.id, receiverId: req.params.id },
+          { requesterId: req.params.id, receiverId: req.user.id },
+        ],
+      },
+    });
+    res.json({ success: true });
+  } catch (e) {
+    console.error("DELETE FRIEND ERR:", e);
+    res.status(500).json({ success: false, error: "server error" });
+  }
+});
+
+api.get("/chat/messages/:friendId", auth, async (req, res) => {
+  try {
+    const friendId = req.params.friendId;
+    const messages = await prisma.chatMessage.findMany({
+      where: {
+        OR: [
+          { senderId: req.user.id, receiverId: friendId },
+          { senderId: friendId, receiverId: req.user.id },
+        ],
+      },
+      orderBy: { createdAt: "asc" },
+      take: 100,
+    });
+
+    await prisma.chatMessage.updateMany({
+      where: { senderId: friendId, receiverId: req.user.id, readAt: null },
+      data: { readAt: new Date() },
+    });
+
+    res.json({ success: true, messages });
+  } catch (e) {
+    console.error("GET MESSAGES ERR:", e);
+    res.status(500).json({ success: false, error: "server error" });
+  }
+});
+
+api.post("/chat/messages", auth, async (req, res) => {
+  try {
+    const { receiverId, body } = req.body;
+    if (!receiverId || !body?.trim()) return res.status(400).json({ success: false, error: "missing fields" });
+
+    const friendship = await prisma.friendship.findFirst({
+      where: {
+        OR: [
+          { requesterId: req.user.id, receiverId },
+          { requesterId: receiverId, receiverId: req.user.id },
+        ],
+      },
+    });
+    if (!friendship) return res.status(403).json({ success: false, error: "add this user as a friend first" });
+
+    const message = await prisma.chatMessage.create({
+      data: {
+        senderId: req.user.id,
+        receiverId,
+        body: body.trim(),
+      },
+    });
+
+    pushChatEvent(receiverId, { type: "message", message });
+    pushChatEvent(req.user.id, { type: "message", message });
+    res.status(201).json({ success: true, message });
+  } catch (e) {
+    console.error("SEND MESSAGE ERR:", e);
+    res.status(500).json({ success: false, error: "server error" });
+  }
+});
+
+api.get("/chat/unread-count", auth, async (req, res) => {
+  try {
+    const count = await prisma.chatMessage.count({
+      where: { receiverId: req.user.id, readAt: null },
+    });
+    res.json({ success: true, count });
+  } catch (e) {
+    console.error("UNREAD COUNT ERR:", e);
+    res.status(500).json({ success: false, error: "server error" });
+  }
+});
+
+app.get("/api/chat/stream", async (req, res) => {
+  try {
+    const token = req.query.token;
+    if (!token) return res.status(401).end();
+    const payload = jwt.verify(token, JWT_SECRET);
+    const userId = payload.sub;
+
+    res.writeHead(200, {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      Connection: "keep-alive",
+    });
+    res.write(`data: ${JSON.stringify({ type: "connected" })}\n\n`);
+
+    const clients = chatClients.get(userId) || new Set();
+    clients.add(res);
+    chatClients.set(userId, clients);
+
+    req.on("close", () => {
+      clients.delete(res);
+      if (!clients.size) chatClients.delete(userId);
+    });
+  } catch {
+    res.status(401).end();
   }
 });
 

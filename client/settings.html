@@ -46,6 +46,52 @@
       </header>
 
       <section class="settings-grid">
+        <section class="settings-card profile-editor">
+          <h2>Profile</h2>
+          <p class="settings-note">Customize how others see you on Iremind. Upload a banner, change your photo, and write a short bio.</p>
+
+          <div class="profile-card-preview" id="profile-card-preview">
+            <div class="profile-card-banner" id="banner-preview">
+              <button type="button" class="profile-card-banner-edit" id="banner-edit-btn" title="Change banner">
+                <i class="fas fa-camera"></i>
+                <span>Change banner</span>
+              </button>
+              <button type="button" class="profile-card-banner-clear" id="banner-clear-btn" title="Remove banner" hidden>
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+            <div class="profile-card-avatar-wrap">
+              <button type="button" class="profile-card-avatar" id="avatar-edit-btn" title="Change profile photo">
+                <img id="avatar-preview" src="./images/avatar.jpg" alt="Profile preview" />
+                <span class="profile-card-avatar-overlay">
+                  <i class="fas fa-camera"></i>
+                </span>
+              </button>
+            </div>
+            <div class="profile-card-body">
+              <strong id="profile-card-name" data-user-name>Profile</strong>
+              <span id="profile-card-status" class="profile-card-status status-ONLINE">
+                <span class="profile-status-icon"><i class="fas fa-check"></i></span>
+                Online
+              </span>
+              <p id="profile-card-about" class="profile-card-about">No about text yet.</p>
+            </div>
+          </div>
+
+          <input id="banner-file-input" type="file" accept="image/*" hidden />
+          <input id="avatar-file-input" type="file" accept="image/*" hidden />
+
+          <div class="profile-upload-actions">
+            <button type="button" class="profile-upload-btn" data-target="avatar">
+              <i class="fas fa-image"></i> Upload profile photo
+            </button>
+            <button type="button" class="profile-upload-btn" data-target="banner">
+              <i class="fas fa-panorama"></i> Upload banner image
+            </button>
+          </div>
+          <p class="settings-note profile-upload-note">JPG, PNG or GIF · max 2&nbsp;MB · banner 1500×500 looks best</p>
+        </section>
+
         <form class="settings-card" id="profile-form">
           <h2>Personal information</h2>
           <label>
@@ -55,6 +101,41 @@
           <label>
             Email
             <input id="settings-email" type="email" required />
+          </label>
+          <label>
+            About me
+            <textarea id="settings-about" rows="4" maxlength="240" placeholder="Write a short profile description"></textarea>
+            <small class="settings-note" id="about-counter">0 / 240</small>
+          </label>
+          <label>
+            Status
+            <div class="status-picker" id="status-picker">
+              <button type="button" class="status-option" data-status="ONLINE">
+                <span class="profile-status-icon status-ONLINE"><i class="fas fa-check"></i></span>
+                Online
+              </button>
+              <button type="button" class="status-option" data-status="STUDYING">
+                <span class="profile-status-icon status-STUDYING"><i class="fas fa-book-open"></i></span>
+                Studying
+              </button>
+              <button type="button" class="status-option" data-status="IDLE">
+                <span class="profile-status-icon status-IDLE"><i class="fas fa-moon"></i></span>
+                Idle
+              </button>
+              <button type="button" class="status-option" data-status="DND">
+                <span class="profile-status-icon status-DND"><i class="fas fa-minus"></i></span>
+                Do not disturb
+              </button>
+              <button type="button" class="status-option" data-status="INVISIBLE">
+                <span class="profile-status-icon status-INVISIBLE"><i class="fas fa-circle"></i></span>
+                Invisible
+              </button>
+            </div>
+            <input id="settings-status" type="hidden" value="ONLINE" />
+          </label>
+          <label>
+            Profile photo size
+            <input id="settings-avatar-size" type="range" min="48" max="120" step="4" />
           </label>
           <button class="primary-pill" type="submit">Save profile</button>
           <p class="form-message" id="profile-message"></p>
@@ -86,11 +167,6 @@
             <button class="theme-choice" data-theme-choice="dark" type="button"><span class="swatch dark"></span>Dark</button>
           </div>
           <p class="settings-note">Theme is saved on this browser and applies when you move between pages.</p>
-        </section>
-
-        <section class="settings-card">
-          <h2>Profile photo</h2>
-          <p class="settings-note">Click the round profile photo to choose an image from your computer. It is saved to your account.</p>
         </section>
       </section>
     </main>

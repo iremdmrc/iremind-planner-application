@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Notes - Iremind</title>
+  <title>Reminder - Iremind</title>
   <link rel="stylesheet" href="/src/study.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
@@ -16,8 +16,8 @@
           <a href="dashboard.html" class="menu-item"><i class="fas fa-chart-line"></i> Dashboard</a>
           <a href="calendar.html" class="menu-item"><i class="fas fa-calendar-alt"></i> Calendar</a>
           <a href="todo.html" class="menu-item"><i class="fas fa-calendar-alt"></i> To-Do List</a>
-          <a href="notes.html" class="menu-item active"><i class="fas fa-sticky-note"></i> Notes</a>
-          <a href="reminder.html" class="menu-item"><i class="fas fa-bell"></i> Reminder</a>
+          <a href="notes.html" class="menu-item"><i class="fas fa-sticky-note"></i> Notes</a>
+          <a href="reminder.html" class="menu-item active"><i class="fas fa-bell"></i> Reminder</a>
           <a href="chat.html" class="menu-item"><i class="fas fa-comment-dots"></i> Chats <span class="menu-item-badge">0</span></a>
         </nav>
         <div class="quote-card">
@@ -31,25 +31,36 @@
         </div>
       </aside>
 
-      <main class="study-main notes-main classic-notes-main">
+      <main class="study-main reminder-main">
         <header class="study-header">
           <div>
-            <h1 class="page-title">Notes</h1>
+            <h1 class="page-title">Reminder</h1>
           </div>
           <div class="user-profile"><img src="./images/avatar.jpg" alt="User Avatar" /></div>
         </header>
 
-        <section class="note-editor classic-note-editor">
-          <span class="editor-kicker">Add a Note</span>
-          <input id="note-title" placeholder="Title" maxlength="100" />
-          <textarea id="note-content" placeholder="Take a note..." rows="7"></textarea>
-          <div class="editor-actions">
-            <input id="note-search" placeholder="Search notes" />
-            <button class="primary-pill" id="save-note-btn">Save note</button>
+        <p class="notif-summary" id="notif-summary">All your reminders, in one quiet place.</p>
+
+        <div class="notif-toolbar">
+          <button class="notif-tab is-active" data-filter="all" type="button">
+            <i class="fas fa-inbox"></i> All <span class="notif-tab-count" id="count-all">0</span>
+          </button>
+          <button class="notif-tab" data-filter="EVENT" type="button">
+            <i class="fas fa-calendar-day"></i> Events <span class="notif-tab-count" id="count-event">0</span>
+          </button>
+          <button class="notif-tab" data-filter="TASK" type="button">
+            <i class="fas fa-circle-check"></i> Tasks <span class="notif-tab-count" id="count-task">0</span>
+          </button>
+          <button class="notif-tab" data-filter="DONE" type="button">
+            <i class="fas fa-check-double"></i> Cleared <span class="notif-tab-count" id="count-done">0</span>
+          </button>
+        </div>
+
+        <section class="notif-feed" id="reminder-list">
+          <div class="notif-skeleton">
+            <span></span><span></span><span></span>
           </div>
         </section>
-
-        <section class="notes-board" id="notes-board"></section>
       </main>
     </div>
 
@@ -77,6 +88,6 @@
   </div>
 
   <script type="module" src="/src/app-shell.js"></script>
-  <script type="module" src="/src/notes.js"></script>
+  <script type="module" src="/src/reminder.js"></script>
 </body>
 </html>

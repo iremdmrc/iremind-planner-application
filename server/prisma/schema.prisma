@@ -15,6 +15,10 @@ model User {
   passwordHash String
   displayName  String
   avatarUrl    String?
+  bannerUrl    String?
+  about        String?
+  status       String    @default("ONLINE")
+  avatarSize   Int       @default(72)
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 
@@ -25,6 +29,11 @@ model User {
   studySessions StudySession[]
   journalEntries JournalEntry[]
   mindMapNodes MindMapNode[]
+  reminderCompletions ReminderCompletion[]
+  sentFriendships Friendship[] @relation("FriendRequester")
+  receivedFriendships Friendship[] @relation("FriendReceiver")
+  sentMessages ChatMessage[] @relation("MessageSender")
+  receivedMessages ChatMessage[] @relation("MessageReceiver")
 }
 
 model Notebook {
@@ -121,4 +130,37 @@ model MindMapNode {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model ReminderCompletion {
+  id          String   @id @default(cuid())
+  sourceType  String
+  sourceId    String
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  completedAt DateTime @default(now())
+
+  @@unique([sourceType, sourceId, userId])
+}
+
+model Friendship {
+  id          String   @id @default(cuid())
+  requesterId String
+  receiverId  String
+  requester   User     @relation("FriendRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+  receiver    User     @relation("FriendReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+
+  @@unique([requesterId, receiverId])
+}
+
+model ChatMessage {
+  id         String    @id @default(cuid())
+  senderId   String
+  receiverId String
+  sender     User      @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver   User      @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  body       String
+  readAt     DateTime?
+  createdAt  DateTime  @default(now())
 }

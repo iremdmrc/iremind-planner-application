@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chats - Iremind</title>
+  <link rel="stylesheet" href="/src/study.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <div class="study-shell">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Iremind<span class="logo-dot">.</span></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="calendar.html" class="menu-item"><i class="fas fa-calendar-alt"></i> Calendar</a>
+        <a href="todo.html" class="menu-item"><i class="fas fa-calendar-alt"></i> To-Do List</a>
+        <a href="notes.html" class="menu-item"><i class="fas fa-sticky-note"></i> Notes</a>
+        <a href="reminder.html" class="menu-item"><i class="fas fa-bell"></i> Reminder</a>
+        <a href="chat.html" class="menu-item active"><i class="fas fa-comment-dots"></i> Chats <span class="menu-item-badge">0</span></a>
+      </nav>
+      <div class="quote-card">
+        <div class="quote-card-tag">Today's reminder</div>
+        <p>"Study together, stay focused together."</p>
+        <p class="quote-card-author">- Iremind</p>
+      </div>
+      <div class="sidebar-footer">
+        <a href="settings.html" class="menu-item"><i class="fas fa-cog"></i> Settings</a>
+        <a href="index.html" class="menu-item"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <main class="study-main chat-main">
+      <section class="chat-app">
+        <!-- LEFT: CHATS LIST -->
+        <aside class="chat-friends-panel">
+          <div class="chat-side-header">
+            <h2>Chats</h2>
+            <button class="chat-side-action" type="button" title="More">
+              <i class="fas fa-ellipsis"></i>
+            </button>
+          </div>
+
+          <div class="chat-search-row">
+            <div class="chat-search">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Search chat" id="friends-search" />
+            </div>
+            <button class="chat-search-filter" type="button" title="Filter">
+              <i class="fas fa-sliders"></i>
+            </button>
+          </div>
+
+          <details class="chat-id-card" id="my-id-details">
+            <summary>
+              <span>Your ID — share to chat</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <strong id="my-chat-id">Loading...</strong>
+            <form class="chat-add-friend" id="add-friend-form">
+              <input id="friend-id-input" placeholder="Add friend by ID" />
+              <button type="submit" title="Add friend"><i class="fas fa-user-plus"></i></button>
+            </form>
+          </details>
+
+          <div class="chat-friends-section-label">All Chats</div>
+          <div class="chat-friends" id="friends-list"></div>
+        </aside>
+
+        <!-- MIDDLE: CONVERSATION -->
+        <section class="chat-room">
+          <header class="chat-room-header" id="chat-room-header">
+            <div class="chat-room-header-left">
+              <div class="chat-room-avatar-wrap">
+                <img src="./images/avatar.jpg" alt="" />
+              </div>
+              <div>
+                <span class="eyebrow">Chat</span>
+                <h1>Select a friend</h1>
+              </div>
+            </div>
+            <div class="chat-room-header-actions">
+              <button type="button" class="chat-icon-btn" title="Video call"><i class="fas fa-video"></i></button>
+              <button type="button" class="chat-icon-btn" title="Voice call"><i class="fas fa-phone"></i></button>
+              <button type="button" class="chat-icon-btn" title="More"><i class="fas fa-ellipsis"></i></button>
+            </div>
+          </header>
+          <div class="messages-list" id="messages-list"></div>
+          <form class="message-form" id="message-form">
+            <button type="button" class="msg-attach-btn" title="Voice"><i class="fas fa-microphone"></i></button>
+            <input id="message-input" placeholder="Write a message" disabled />
+            <button type="button" class="msg-attach-btn" title="Attach image"><i class="fas fa-image"></i></button>
+            <button type="button" class="msg-attach-btn" title="Attach file"><i class="fas fa-paperclip"></i></button>
+            <button type="submit" disabled id="send-message-btn" class="msg-send-btn" title="Send">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </section>
+
+        <!-- RIGHT: DETAILS -->
+        <aside class="profile-panel" id="profile-panel">
+          <div class="chat-side-header">
+            <h2>Details</h2>
+            <button class="chat-side-action" type="button" title="More">
+              <i class="fas fa-ellipsis"></i>
+            </button>
+          </div>
+          <p class="profile-empty-note">Click a friend to view their profile.</p>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/src/app-shell.js"></script>
+  <script type="module" src="/src/chat.js"></script>
+</body>
+</html>

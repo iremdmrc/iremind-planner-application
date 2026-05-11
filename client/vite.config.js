@@ -10,4 +10,11 @@ export default defineConfig({
       },
     }),
   ],
+  server: {
+    // Sunucu hazır olunca tarayıcıyı otomatik aç
+    open: '/index.html',
+    host: 'localhost',
+    port: 5173,
+    strictPort: false,
+  },
 })
