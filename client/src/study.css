@@ -5787,11 +5787,11 @@ body:not(.focus-page) .study-shell .study-main {
 }
 
 .reminder-main .study-header {
-  margin-top: 26px;
-  padding-top: 1.15rem;
+  margin-top: 54px;
+  padding-top: 1.35rem;
 }
 
 .reminder-main .study-header h1,
 .reminder-main .study-header .page-title {
-  margin-top: 28px;
+  margin-top: 34px;
 }
