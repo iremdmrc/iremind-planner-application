@@ -5933,3 +5933,64 @@ body:not(.focus-page) .study-shell .study-main {
     gap: 10px;
   }
 }
+
+/* Final chat theme alignment: every theme controls the full chat surface */
+body:not(.focus-page) .study-main.chat-main .chat-app {
+  --c-bg: color-mix(in srgb, var(--surface) 82%, var(--bg) 18%);
+  --c-bg-soft: color-mix(in srgb, var(--surface-strong) 86%, var(--bg) 14%);
+  --c-bg-deep: color-mix(in srgb, var(--surface-strong) 94%, var(--surface) 6%);
+  --c-border: color-mix(in srgb, var(--border) 74%, transparent);
+  --c-border-strong: color-mix(in srgb, var(--primary) 18%, var(--border) 82%);
+  --c-text: var(--text);
+  --c-muted: color-mix(in srgb, var(--muted) 88%, var(--text) 12%);
+  --c-faint: color-mix(in srgb, var(--muted) 66%, var(--surface) 34%);
+  --c-accent: var(--primary);
+  --c-accent-2: var(--accent);
+  --c-accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
+  --c-bubble: color-mix(in srgb, var(--surface-strong) 96%, var(--bg) 4%);
+  --c-bubble-me: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background: var(--c-bg-soft);
+}
+
+body:not(.focus-page) .study-main.chat-main .chat-room {
+  background:
+    radial-gradient(circle at 12% 14%, color-mix(in srgb, var(--accent) 10%, transparent) 0%, transparent 30%),
+    radial-gradient(circle at 86% 82%, color-mix(in srgb, var(--primary) 8%, transparent) 0%, transparent 34%),
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, var(--bg) 8%) 0%, color-mix(in srgb, var(--surface) 78%, var(--bg) 22%) 100%);
+}
+
+body:not(.focus-page) .study-main.chat-main .messages-list {
+  background: transparent;
+}
+
+body:not(.focus-page) .study-main.chat-main .message-row {
+  width: 100%;
+}
+
+body:not(.focus-page) .study-main.chat-main .message-cluster {
+  max-width: min(560px, 68%);
+}
+
+body:not(.focus-page) .study-main.chat-main .message-bubble {
+  background: var(--c-bubble);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  box-shadow: 0 10px 22px -16px color-mix(in srgb, var(--primary) 38%, transparent);
+}
+
+body:not(.focus-page) .study-main.chat-main .message-row.is-me .message-bubble {
+  background: var(--c-bubble-me);
+  color: #fff;
+  border-color: transparent;
+}
+
+body:not(.focus-page) .study-main.chat-main .message-row.is-me .message-stamp {
+  color: var(--c-muted);
+}
+
+html[data-theme="dark"] body:not(.focus-page) .study-main.chat-main .chat-room {
+  background:
+    radial-gradient(circle at 16% 16%, rgba(184, 165, 255, 0.16) 0%, transparent 34%),
+    radial-gradient(circle at 86% 82%, rgba(143, 199, 255, 0.12) 0%, transparent 36%),
+    linear-gradient(180deg, #0f172a 0%, #111827 100%);
+}
