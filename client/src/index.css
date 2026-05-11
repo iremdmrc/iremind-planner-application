@@ -439,13 +439,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 15px;
+    gap: 30px;
     margin-left: 0;
 }
 
 .user-profile img {
-    width: 122px;
-    height: 122px;
+    width: 136px;
+    height: 136px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
@@ -453,8 +453,8 @@ body {
 
 .user-profile {
     cursor: pointer;
-    width: 122px;
-    height: 122px;
+    width: 136px;
+    height: 136px;
     border-radius: 50%;
     overflow: hidden;
     flex: 0 0 auto;

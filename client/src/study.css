@@ -6013,3 +6013,204 @@ html[data-theme="dark"] body:not(.focus-page) .study-main.chat-main .chat-room {
 body:not(.focus-page) .study-shell .upgrade-card {
   display: none !important;
 }
+
+body.chat-dark-mode .study-main.chat-main .chat-app {
+  --c-bg: color-mix(in srgb, var(--primary) 26%, #10131f 74%);
+  --c-bg-soft: color-mix(in srgb, var(--primary) 18%, #111827 82%);
+  --c-bg-deep: color-mix(in srgb, var(--primary) 15%, #172033 85%);
+  --c-border: rgba(255,255,255,0.13);
+  --c-border-strong: rgba(255,255,255,0.2);
+  --c-text: #f9fafb;
+  --c-muted: #d7dbe8;
+  --c-faint: #a9afc0;
+  --c-bubble: color-mix(in srgb, var(--primary) 18%, #1f2937 82%);
+  --c-bubble-me: linear-gradient(135deg, color-mix(in srgb, var(--primary) 76%, #111827) 0%, color-mix(in srgb, var(--accent) 82%, #111827) 100%);
+}
+
+body.chat-dark-mode .study-main.chat-main .chat-room {
+  background:
+    radial-gradient(circle at 16% 16%, color-mix(in srgb, var(--accent) 18%, transparent) 0%, transparent 34%),
+    radial-gradient(circle at 86% 82%, color-mix(in srgb, var(--primary) 20%, transparent) 0%, transparent 36%),
+    linear-gradient(180deg, color-mix(in srgb, var(--primary) 16%, #0f172a 84%) 0%, #111827 100%);
+}
+
+.chat-attachment {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  max-width: 100%;
+}
+
+.chat-attachment-image img {
+  display: block;
+  width: min(260px, 100%);
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.chat-attachment-image figcaption,
+.chat-attachment-file span {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.chat-attachment-file,
+.chat-attachment-audio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.chat-attachment-audio audio {
+  width: min(260px, 100%);
+  height: 34px;
+}
+
+.msg-attach-btn.is-recording {
+  background: #ef4444;
+  color: #fff;
+  animation: pulse-recording 1s infinite;
+}
+
+@keyframes pulse-recording {
+  50% { transform: scale(1.06); }
+}
+
+.profile-id-menu {
+  position: relative;
+}
+
+.profile-id-menu summary {
+  list-style: none;
+}
+
+.profile-id-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.profile-id-menu[open] {
+  z-index: 20;
+}
+
+.profile-id-menu[open]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+}
+
+.profile-id-menu > button,
+.profile-id-menu > small {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  width: 210px;
+  border: 1px solid var(--c-border);
+  background: var(--c-bg-deep);
+  color: var(--c-text);
+  box-shadow: 0 18px 34px -24px rgba(0,0,0,0.4);
+}
+
+.profile-id-menu > button {
+  padding: 11px 13px;
+  border-radius: 12px 12px 0 0;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+}
+
+.profile-id-menu > small {
+  top: 82px;
+  padding: 10px 13px;
+  border-top: 0;
+  border-radius: 0 0 12px 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  overflow-wrap: anywhere;
+}
+
+.chat-call-modal[hidden] {
+  display: none;
+}
+
+.chat-call-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.52);
+  backdrop-filter: blur(10px);
+}
+
+.chat-call-card {
+  width: min(560px, 92vw);
+  padding: 20px;
+  border-radius: 22px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  color: var(--text);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.28);
+}
+
+.chat-call-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.chat-call-label {
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.chat-call-header h2 {
+  margin: 4px 0 0;
+}
+
+.chat-call-close,
+.chat-call-end {
+  border: 0;
+  cursor: pointer;
+}
+
+.chat-call-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+  color: var(--primary);
+}
+
+.chat-call-card video {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  background: #111827;
+  object-fit: cover;
+}
+
+.chat-call-card video[hidden] {
+  display: none;
+}
+
+.chat-call-end {
+  margin-top: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: #ef4444;
+  color: #fff;
+  font-weight: 800;
+}
+
+.study-shell + .iremind-footer {
+  display: none !important;
+}

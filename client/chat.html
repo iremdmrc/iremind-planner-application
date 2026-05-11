@@ -80,20 +80,22 @@
               </div>
             </div>
             <div class="chat-room-header-actions">
-              <button type="button" class="chat-icon-btn" title="Video call"><i class="fas fa-video"></i></button>
-              <button type="button" class="chat-icon-btn" title="Voice call"><i class="fas fa-phone"></i></button>
-              <button type="button" class="chat-icon-btn" title="More"><i class="fas fa-ellipsis"></i></button>
+              <button type="button" class="chat-icon-btn" data-call-type="video" title="Video call"><i class="fas fa-video"></i></button>
+              <button type="button" class="chat-icon-btn" data-call-type="voice" title="Voice call"><i class="fas fa-phone"></i></button>
+              <button type="button" class="chat-icon-btn" id="chat-theme-toggle" title="Dark chat"><i class="fas fa-moon"></i></button>
             </div>
           </header>
           <div class="messages-list" id="messages-list"></div>
           <form class="message-form" id="message-form">
-            <button type="button" class="msg-attach-btn" title="Voice"><i class="fas fa-microphone"></i></button>
+            <button type="button" class="msg-attach-btn" id="voice-message-btn" title="Voice"><i class="fas fa-microphone"></i></button>
             <input id="message-input" placeholder="Write a message" disabled />
-            <button type="button" class="msg-attach-btn" title="Attach image"><i class="fas fa-image"></i></button>
-            <button type="button" class="msg-attach-btn" title="Attach file"><i class="fas fa-paperclip"></i></button>
+            <button type="button" class="msg-attach-btn" id="attach-image-btn" title="Attach image"><i class="fas fa-image"></i></button>
+            <button type="button" class="msg-attach-btn" id="attach-file-btn" title="Attach file"><i class="fas fa-paperclip"></i></button>
             <button type="submit" disabled id="send-message-btn" class="msg-send-btn" title="Send">
               <i class="fas fa-paper-plane"></i>
             </button>
+            <input type="file" id="chat-image-input" accept="image/*" hidden />
+            <input type="file" id="chat-file-input" hidden />
           </form>
         </section>
 
@@ -109,6 +111,21 @@
         </aside>
       </section>
     </main>
+  </div>
+
+  <div class="chat-call-modal" id="chat-call-modal" hidden>
+    <div class="chat-call-card">
+      <div class="chat-call-header">
+        <div>
+          <span class="chat-call-label" id="chat-call-label">Call</span>
+          <h2 id="chat-call-title">Starting call...</h2>
+        </div>
+        <button type="button" class="chat-call-close" id="chat-call-close"><i class="fas fa-xmark"></i></button>
+      </div>
+      <video id="chat-call-video" autoplay muted playsinline></video>
+      <p id="chat-call-note">Your microphone/camera is active in this call preview.</p>
+      <button type="button" class="chat-call-end" id="chat-call-end"><i class="fas fa-phone-slash"></i> End call</button>
+    </div>
   </div>
 
   <script type="module" src="/src/app-shell.js"></script>
