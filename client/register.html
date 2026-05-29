@@ -1,118 +1,108 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Register — Iremind</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="icon" href="./images/first-logo.png" />
-    
-    <link rel="stylesheet" href="/src/auth.css" /> 
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Create Account - iRemind</title>
+  <link rel="icon" href="./images/first-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="/src/auth.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-
-<body class="auth-page">
+<body class="login-page auth-register-page">
 
   <video id="bg-video" autoplay loop muted playsinline>
     <source src="./videos/background.mp4" type="video/mp4">
-</video>
+  </video>
 
-    <main class="auth">
-        <div class="auth-container-wrapper">
-            
-            <div class="illustration-panel">
-                <img class="loginimg" src="./images/loginimg.png" alt="">
-                </div>
+  <div class="auth-classic">
+    <div class="auth-classic-inner">
 
-            <div class="auth-card">
-                
-              <header>
-    <div class="logo-area">
-        <img src="./images/first-logo.png" alt="Iremind Logo" />
-        <span>iREMIND</span>
-    </div>
-    
-    <div class="dropdown settings-menu">
-        <button class="dropbtn" type="button">Settings</button>
-        <div class="dropdown-content">
-            <button type="button" data-auth-theme="light">Light theme</button>
-            <button type="button" data-auth-theme="dark">Dark theme</button>
-            <div class="language-menu">
-                <button class="language-trigger" type="button">Languages</button>
-                <div class="language-options">
-                    <button type="button" data-auth-lang="en">English</button>
-                    <button type="button" data-auth-lang="tr">Turkish</button>
-                    <button type="button" data-auth-lang="es">Spanish</button>
-                    <button type="button" data-auth-lang="fr">French</button>
-                    <button type="button" data-auth-lang="de">German</button>
-                </div>
-            </div>
-            <a href="mailto:iremdemircii61@gmail.com">Help Center</a>
+      <div class="auth-illustration">
+        <img src="./images/loginimg.png" alt="iRemind" />
+      </div>
+
+      <div class="auth-card-classic">
+        <div class="auth-theme-row">
+          <button type="button" data-auth-theme="light" class="auth-theme-btn">
+            <i class="fas fa-sun"></i> Light
+          </button>
+          <button type="button" data-auth-theme="dark" class="auth-theme-btn">
+            <i class="fas fa-moon"></i> Dark
+          </button>
         </div>
+
+        <div class="auth-card-eyebrow">Get started free</div>
+        <h1 class="auth-card-title">Create your account</h1>
+        <p class="auth-card-subtitle">Start planning your studies in less than a minute.</p>
+
+        <form id="register-form" class="auth-form">
+          <div class="error auth-error" style="display:none"></div>
+
+          <div class="auth-field">
+            <label class="auth-label" for="reg-fullname">Full Name</label>
+            <div class="auth-input-wrap">
+              <i class="fas fa-user auth-input-icon"></i>
+              <input id="reg-fullname" class="auth-input" type="text" name="fullname" required placeholder="Your full name" />
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label class="auth-label" for="reg-username">Username</label>
+            <div class="auth-input-wrap">
+              <i class="fas fa-at auth-input-icon"></i>
+              <input id="reg-username" class="auth-input" type="text" name="username" required placeholder="Choose a username" />
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label class="auth-label" for="reg-email">Email</label>
+            <div class="auth-input-wrap">
+              <i class="fas fa-envelope auth-input-icon"></i>
+              <input id="reg-email" class="auth-input" type="email" name="email" required autocomplete="email" placeholder="you@university.edu" />
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label class="auth-label" for="reg-password">Password</label>
+            <div class="auth-input-wrap">
+              <i class="fas fa-lock auth-input-icon"></i>
+              <input id="reg-password" class="auth-input" type="password" name="password" required autocomplete="new-password" placeholder="Min. 8 characters" />
+              <button type="button" class="auth-pass-toggle" tabindex="-1">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <label class="auth-terms">
+            <input type="checkbox" id="terms" required />
+            <span>I agree to iRemind's <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</span>
+          </label>
+
+          <button class="btn-primary" type="submit">
+            <i class="fas fa-user-plus"></i>
+            Create Account
+          </button>
+
+          <div class="social-login-separator">or sign up with</div>
+
+          <div class="social-login">
+            <button type="button" class="btn-social">
+              <i class="fab fa-google"></i> Google
+            </button>
+            <button type="button" class="btn-social">
+              <i class="fab fa-apple"></i> Apple
+            </button>
+          </div>
+        </form>
+
+        <p class="auth-switch">
+          Already have an account? <a href="index.html">Sign in</a>
+        </p>
+      </div>
     </div>
-    </header>
+  </div>
 
-                <h1 data-i18n="registerTitle">Sign Up For Free.</h1>
-                <p class="subtitle" data-i18n="registerSubtitle">Find balance in your mind.</p>
-                
-                <form id="register-form" class="form">
-                    
-                    <label>
-                        <span data-i18n="username">Username</span>
-                        <input type="text" name="username" required placeholder="Enter username..." />
-                    </label>
-
-                    <label>
-                        <span data-i18n="fullName">Full Name</span>
-                        <input type="text" name="fullname" required placeholder="Enter full name..." />
-                    </label>
-
-                    <label>
-                        <span data-i18n="email">Email Address</span>
-                        <input type="email" name="email" required autocomplete="email" placeholder="Enter email address..." />
-                    </label>
-                    
-                    <label>
-                        <span data-i18n="password">Password</span>
-                        <input type="password" name="password" required autocomplete="new-password" placeholder="Enter password..." />
-                    </label>
-
-<div class="terms-checkbox">
-    <input type="checkbox" id="terms" required>
-    <label for="terms">
-        <span class="terms-text">
-            I accept to the 
-            <a href="#">Terms and Conditions</a> 
-            and I agree to the terms of <br>
-            <a href="#">Privacy Policy</a>
-        </span>
-    </label>
-</div>
-
-                    <button class="btn btn-primary btn-full-width" type="submit">
-                        <span data-i18n="signUp">SIGN UP</span>
-                    </button>
-
-                    <p class="social-login-separator">OR SIGN UP WITH:</p>
-                    
-                    <div class="social-login">
-                        <a href="#" class="social-icon facebook">F</a>
-                        <a href="#" class="social-icon twitter">t</a>
-                        <a href="#" class="social-icon google">G+</a>
-                    </div>
-                </form>
-                
-                <p class="muted">
-                    <span data-i18n="haveAccount">Already have an account?</span> <a href="index.html" class="link-primary" data-i18n="signIn">Sign In</a>
-                </p>
-            </div>
-            </div>
-        </main>
-        
-<script type="module" src="/src/auth.js"></script>
-
-
-
+  <script type="module" src="/src/auth.js"></script>
 </body>
 </html>
